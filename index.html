@@ -6,167 +6,7 @@
         <title>My Portfolio</title>
         <link rel="stylesheet" href="./styles/style.css">
         <link rel="stylesheet" href="./styles/responsive.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-        <style>
-            body {
-                font-family: 'Poppins', sans-serif;
-                background-color: #f4f4f9;
-                color: #333;
-                margin: 0;
-                padding: 0;
-            }
-    
-            header {
-                background-color: #001f3f;
-                color: #fff;
-                padding: 20px 0;
-            }
-    
-            .main-container {
-                width: 90%;
-                margin: auto;
-                max-width: 1200px;
-            }
-    
-            .nav {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
-    
-            .nav ul {
-                list-style: none;
-                padding: 0;
-            }
-    
-            .nav ul li {
-                display: inline;
-                margin-left: 20px;
-            }
-    
-            .nav ul li a {
-                color: #fff;
-                text-decoration: none;
-                font-weight: 600;
-            }
-    
-            .hero-left {
-                margin-top: 50px;
-            }
-    
-            .hero-name span {
-                color: #1e90ff;
-            }
-    
-            .footer-icons a svg {
-                fill: #1e90ff;
-                margin-right: 10px;
-            }
-    
-            .skills .education-title {
-                color: #001f3f;
-                font-weight: 600;
-            }
-    
-            .portofolio-cover img {
-                max-width: 100%;
-                height: auto;
-            }
-    
-            .portofolio-info .portofolio-title h4 {
-                color: #001f3f;
-                font-weight: 600;
-            }
-    
-            .portofolio-tags div {
-                background-color: #001f3f;
-                color: #fff;
-                display: inline-block;
-                padding: 5px 10px;
-                margin-right: 5px;
-                margin-bottom: 5px;
-                border-radius: 3px;
-            }
-    
-            .btn-outline-dark {
-                border-color: #1e90ff;
-                color: #1e90ff;
-            }
-    
-            .btn-outline-dark:hover {
-                background-color: #1e90ff;
-                color: #fff;
-            }
-    
-            .contact-form input, .contact-form textarea {
-                width: 100%;
-                padding: 10px;
-                margin-bottom: 10px;
-                border: 1px solid #ccc;
-                border-radius: 5px;
-            }
-    
-            .btn-submit {
-                background-color: #001f3f;
-                color: #fff;
-                border: none;
-                padding: 10px 20px;
-                cursor: pointer;
-                border-radius: 5px;
-            }
-    
-            .btn-submit:hover {
-                background-color: #1e90ff;
-            }
-    
-            /* Smooth Scroll */
-            html {
-                scroll-behavior: smooth;
-            }
-
-                    /* Scrollable image container untuk portfolio */
-        .scroll-container {
-        overflow-x: auto;
-        overflow-y: hidden;
-        white-space: nowrap;
-        border-radius: 10px;
-        scrollbar-width: thin;
-        scrollbar-color: #ccc transparent;
-        }
-
-        .scroll-wrapper {
-        display: inline-flex;
-        gap: 10px;
-        }
-
-        .scroll-wrapper img {
-        height: 180px;
-        border-radius: 10px;
-        object-fit: cover;
-        flex-shrink: 0;
-        transition: transform 0.3s ease;
-        }
-
-        .scroll-wrapper img:hover {
-        transform: scale(1.05);
-        }
-
-        /* scrollbar style khusus WebKit (Chrome/Safari) */
-        .scroll-container::-webkit-scrollbar {
-        height: 8px;
-        }
-
-        .scroll-container::-webkit-scrollbar-thumb {
-        background-color: #999;
-        border-radius: 10px;
-        }
-
-        .scroll-container::-webkit-scrollbar-track {
-        background: transparent;
-        }
-
-        </style>
     </head>
 <body>
    <!-- ===== HEADER START ===== -->
@@ -184,8 +24,8 @@
           <li><a href="#portofolios">Portofolio</a></li>
           <li><a href="#contact">Contact</a></li>
           <li>
-            <a href="/CV_Muhammad Faisal.pdf" target="_blank">
-              <button type="button" class="btn btn-outline-dark">Download CV</button>
+            <a href="CV_Muhammad Faisal.pdf" target="_blank">
+              <button type="button" class="btn-custom-outline">Download CV</button>
             </a>
           </li>
         </ul>
@@ -273,144 +113,6 @@
   });
 </script>
 
-<style>
-  /* Header Styles */
-  header {
-    background-color: #001f3f;
-    color: #fff;
-    padding: 20px 0 60px 0;
-  }
-
-  .nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .nav-links ul {
-    display: flex;
-    list-style: none;
-    gap: 25px;
-    margin: 0;
-    padding: 0;
-  }
-
-  .nav-links ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.3s;
-  }
-
-  .nav-links ul li a:hover {
-    color: #1e90ff;
-  }
-
-  .burger {
-    display: none;
-    cursor: pointer;
-  }
-
-  .burger div {
-    width: 25px;
-    height: 3px;
-    background-color: white;
-    margin: 5px;
-    transition: all 0.3s ease;
-  }
-
-  .hero {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 40px;
-  }
-
-  .hero-left {
-    flex: 1;
-    min-width: 280px;
-  }
-
-  .hero-right {
-    flex: 1;
-    text-align: right;
-  }
-
-  .hero-img {
-    max-width: 320px;
-    border-radius: 15px;
-  }
-
-  .pre-title {
-    font-size: 1.2rem;
-    color: #1e90ff;
-    margin-bottom: 5px;
-  }
-
-  .hero-name {
-    font-size: 2.5rem;
-    font-weight: 700;
-  }
-
-  .hero-name span {
-    color: #1e90ff;
-  }
-
-  .footer-icons {
-    margin-top: 15px;
-  }
-
-  .footer-icons a {
-    margin-right: 15px;
-    display: inline-block;
-  }
-
-  /* Responsive Styles */
-  @media (max-width: 768px) {
-    .nav-links ul {
-      position: absolute;
-      right: 0;
-      top: 70px;
-      background-color: #001f3f;
-      flex-direction: column;
-      width: 100%;
-      align-items: center;
-      display: none;
-    }
-
-    .nav-links ul.nav-active {
-      display: flex;
-    }
-
-    .burger {
-      display: block;
-    }
-
-    .toggle .line-1 {
-      transform: rotate(-45deg) translate(-5px, 6px);
-    }
-
-    .toggle .line-2 {
-      opacity: 0;
-    }
-
-    .toggle .line-3 {
-      transform: rotate(45deg) translate(-5px, -6px);
-    }
-
-    .hero {
-      flex-direction: column;
-      text-align: center;
-    }
-
-    .hero-right {
-      text-align: center;
-      margin-top: 30px;
-    }
-  }
-</style>
-
 <!-- ===== HEADER END ===== -->
 
     <!--End of Header-->
@@ -420,7 +122,7 @@
 
 
     <!--skills and education-->
-<section id="skills">
+<section id="skills" class="fade-in">
     <div class="skills main-container">
         <h3 class="pre-title">Learning Path</h3>
         <h1 class="section-title">Training and Certification:</h1>
@@ -495,13 +197,13 @@
 
 
 <!--Portofolios-->
-<section id="portofolios">
+<section id="portofolios" class="fade-in">
     <div class="portofolios main-container">
         <h3 class="pre-title">My Works</h3>
         <h1 class="section-title">Featured Portofolios</h1>
         <div class="grid-3">
             <!--Portofolios 1-->
-            <div class="portofolio">
+            <div class="portofolio fade-in">
                 <div class="portofolio-cover">
                     <img src="./images/iot.png" alt="Gambar 1">
                 </div>
@@ -524,7 +226,7 @@
             </div>
 
             <!--Portofolios 2-->
-            <div class="portofolio">
+            <div class="portofolio fade-in">
                 <div class="portofolio-cover">
                     <img src="./images/mobile.png" alt="Gambar 1">
                 </div>
@@ -547,7 +249,7 @@
             </div>
 
             <!--Portofolios 3-->
-            <div class="portofolio">
+            <div class="portofolio fade-in">
                 <div class="portofolio-cover">
                     <img src="./images/web.png.jpg" alt="Gambar 1">
                 </div>
@@ -570,7 +272,7 @@
             </div>
             
             <!--Portofolios 4-->
-            <div class="portofolio">
+            <div class="portofolio fade-in">
                 <div class="portofolio-cover">
                     <img src="./images/api.png" alt="Gambar 1">
                 </div>
@@ -593,7 +295,7 @@
             </div>
 
             <!--Portofolios 5-->
-            <div class="portofolio">
+            <div class="portofolio fade-in">
                 <div class="portofolio-cover">
                     <img src="./images/rpl.png" alt="Gambar 1">
                 </div>
@@ -617,7 +319,7 @@
 
 
             <!--Portofolios 6-->
-            <div class="portofolio">
+            <div class="portofolio fade-in">
                 <div class="portofolio-cover scroll-container">
                     <div class="scroll-wrapper">
                         <img src="./images/jaringan1.jpg" alt="Jaringan 1">
@@ -631,7 +333,7 @@
                 <div class="portofolio-info">
                     <div class="portofolio-title">
                         <h4>Project Mandiri | Website penjualan alat jaringan </h4>
-                        <a href="https://github.com/CityFactory/ahpdisabilitas.git" class="portofolio-link">
+                        <a href="#" class="portofolio-link">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                 <path d="M3 0l18 15h-11.081l-6.919 9z"/>
                             </svg>
@@ -645,7 +347,7 @@
             </div>
 
             <!--Portofolios 7 -->
-            <div class="portofolio">
+            <div class="portofolio fade-in">
                 <div class="portofolio-cover scroll-container">
                     <div class="scroll-wrapper">
                         <img src="./images/portfolio1.jpg" alt="portfolio 1">
@@ -658,7 +360,7 @@
                 <div class="portofolio-info">
                     <div class="portofolio-title">
                         <h4>Project Mandiri | Website Portfolio model bento grid </h4>
-                        <a href="https://github.com/CityFactory/ahpdisabilitas.git" class="portofolio-link">
+                        <a href="#" class="portofolio-link">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                 <path d="M3 0l18 15h-11.081l-6.919 9z"/>
                             </svg>
@@ -672,7 +374,7 @@
             </div>
 
             <!--Portofolios 8-->
-            <div class="portofolio">
+            <div class="portofolio fade-in">
                 <div class="portofolio-cover scroll-container">
                     <div class="scroll-wrapper">
                         <img src="./images/cleaning1.jpg" alt="cleaning 1">
@@ -686,7 +388,7 @@
                 <div class="portofolio-info">
                     <div class="portofolio-title">
                         <h4>Project Mandiri | Website Jasa Cleaning Service </h4>
-                        <a href="https://github.com/CityFactory/ahpdisabilitas.git" class="portofolio-link">
+                        <a href="#" class="portofolio-link">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                 <path d="M3 0l18 15h-11.081l-6.919 9z"/>
                             </svg>
@@ -700,7 +402,7 @@
             </div>
 
             <!--Portofolios 9-->
-            <div class="portofolio">
+            <div class="portofolio fade-in">
                 <div class="portofolio-cover scroll-container">
                     <div class="scroll-wrapper">
                         <img src="./images/motor1.jpg" alt="motor 1">
@@ -714,7 +416,7 @@
                 <div class="portofolio-info">
                     <div class="portofolio-title">
                         <h4>Project Mandiri | Website rental motor </h4>
-                        <a href="https://github.com/CityFactory/ahpdisabilitas.git" class="portofolio-link">
+                        <a href="#" class="portofolio-link">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                 <path d="M3 0l18 15h-11.081l-6.919 9z"/>
                             </svg>
@@ -728,7 +430,7 @@
             </div>
 
             <!--Portofolios 10-->
-            <div class="portofolio">
+            <div class="portofolio fade-in">
                 <div class="portofolio-cover scroll-container">
                     <div class="scroll-wrapper">
                         <img src="./images/kue1.jpg" alt="kue 1">
@@ -742,7 +444,7 @@
                 <div class="portofolio-info">
                     <div class="portofolio-title">
                         <h4>Project Mandiri | Website penjualan kue tradisional </h4>
-                        <a href="https://github.com/CityFactory/ahpdisabilitas.git" class="portofolio-link">
+                        <a href="#" class="portofolio-link">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                 <path d="M3 0l18 15h-11.081l-6.919 9z"/>
                             </svg>
@@ -756,7 +458,7 @@
             </div>
             
             <!--Portofolios 11-->
-            <div class="portofolio">
+            <div class="portofolio fade-in">
                 <div class="portofolio-cover scroll-container">
                     <div class="scroll-wrapper">
                         <img src="./images/tenda1.jpg" alt="tenda 1">
@@ -770,7 +472,7 @@
                 <div class="portofolio-info">
                     <div class="portofolio-title">
                         <h4>Project Mandiri | Website rental tenda  </h4>
-                        <a href="https://github.com/CityFactory/ahpdisabilitas.git" class="portofolio-link">
+                        <a href="#" class="portofolio-link">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                 <path d="M3 0l18 15h-11.081l-6.919 9z"/>
                             </svg>
@@ -785,7 +487,7 @@
 
 
                        <!--Portofolios 12-->
-            <div class="portofolio">
+            <div class="portofolio fade-in">
                 <div class="portofolio-cover scroll-container">
                     <div class="scroll-wrapper">
                         <img src="./images/magang1.png" alt="Magang 1">
@@ -798,7 +500,7 @@
                 <div class="portofolio-info">
                     <div class="portofolio-title">
                         <h4>Project Magang | Visualisasi peserta DTS Indonesia Bagian Timur</h4>
-                        <a href="https://github.com/CityFactory/ahpdisabilitas.git" class="portofolio-link">
+                        <a href="#" class="portofolio-link">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                 <path d="M3 0l18 15h-11.081l-6.919 9z"/>
                             </svg>
@@ -815,7 +517,7 @@
             </div>
 
             <!--Portofolios 13-->
-            <div class="portofolio">
+            <div class="portofolio fade-in">
                 <div class="portofolio-cover scroll-container">
                     <div class="scroll-wrapper">
                         <img src="./images/websekolah1.png" alt="Website Sekolah 1">
@@ -847,7 +549,7 @@
             </div>
 
            <!--Portofolios 14-->
-<div class="portofolio">
+<div class="portofolio fade-in">
     <div class="portofolio-cover scroll-container">
         <div class="scroll-wrapper">
             <img src="./images/ta1.png" alt="Tugas Akhir 1">
@@ -894,7 +596,7 @@
 
 
     <!--contact-->
-    <section id="contact">
+    <section id="contact" class="fade-in">
         <div class="contact main-container">
             <div class="contact-left">
                 <form class="contact-form" action="https://formspree.io/f/mknddwol" method="POST">
@@ -957,7 +659,6 @@
     <!--end footer-->
 </body>
 <script src="scripts/main.js"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="scripts/validation.js"></script>
+<script src="scripts/animation.js"></script>
 </html>
