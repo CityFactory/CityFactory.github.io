@@ -3,459 +3,298 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammad Faisal | Portfolio</title>
+    <title>Muhammad Faisal | Tech Portfolio</title>
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/scrollreveal"></script>
     
     <style>
-        /* --- GLOBAL VARIABLES & RESET --- */
+        /* --- GLOBAL VARIABLES & THEME (DOMINAN BIRU) --- */
         :root {
-            --primary-color: #001f3f;
-            --accent-color: #1e90ff;
-            --bg-color: #f8f9fa;
-            --text-color: #333;
-            --card-bg: #ffffff;
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            --transition: all 0.3s ease;
+            --bg-dark: #020c1b; 
+            --bg-secondary: #0a192f; 
+            --primary-blue: #007bff; 
+            --neon-blue: #00f2ff; 
+            --deep-blue-gradient: linear-gradient(135deg, #007bff, #00f2ff); 
+            
+            --text-light: #e6f1ff; 
+            --text-muted: #8892b0; 
+            
+            --glass-bg: rgba(10, 25, 47, 0.7); 
+            --glass-border: 1px solid rgba(0, 242, 255, 0.1); 
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); 
+            
+            --transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            background-color: var(--bg-dark);
+            color: var(--text-light);
             line-height: 1.6;
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(0, 123, 255, 0.05) 0%, transparent 30%),
+                radial-gradient(circle at 80% 80%, rgba(0, 242, 255, 0.05) 0%, transparent 30%);
+            background-attachment: fixed;
         }
 
-        a { text-decoration: none !important; }
+        a { text-decoration: none !important; color: inherit; }
         ul { list-style: none; }
 
-        .main-container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
+        .main-container { width: 90%; max-width: 1200px; margin: 0 auto; }
+        section { padding: 100px 0; }
+
+        /* --- TYPOGRAPHY --- */
+        .gradient-text {
+            background: var(--deep-blue-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
         }
 
-        /* --- HEADER & NAVIGATION --- */
-        header {
-            background-color: var(--primary-color);
-            padding: 15px 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo h4 {
-            color: #fff;
-            margin: 0;
-            font-weight: 700;
-            font-size: 1.2rem;
-        }
-
-        .nav-links ul {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            margin: 0;
-        }
-
-        .nav-links a {
-            color: #fff;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover {
-            color: var(--accent-color);
-        }
-
-        /* --- BUTTON STYLES --- */
-        .btn-custom {
-            border: 2px solid var(--accent-color);
-            color: var(--accent-color);
-            padding: 8px 20px;
-            border-radius: 50px;
-            background: transparent;
-            font-weight: 600;
-            transition: var(--transition);
-            cursor: pointer;
-        }
-
-        .btn-custom:hover {
-            background: var(--accent-color);
-            color: #fff;
-            transform: translateY(-2px);
-        }
-
-        /* --- BURGER MENU (MOBILE) --- */
-        .burger {
-            display: none;
-            cursor: pointer;
-        }
-
-        .burger div {
-            width: 25px;
-            height: 3px;
-            background-color: #fff;
-            margin: 5px;
-            transition: var(--transition);
-        }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            padding-top: 120px; /* Offset for fixed header */
-            padding-bottom: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            min-height: 90vh;
-        }
-
-        .hero-left {
-            flex: 1;
-            padding-right: 20px;
-        }
-
-        .pre-title {
-            color: var(--accent-color);
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        .hero-name {
-            font-size: 3.5rem;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 20px;
-            color: var(--primary-color);
-        }
-
-        .hero-name span { color: var(--accent-color); }
-
-        .hero-desc {
-            font-size: 1.1rem;
-            color: #555;
-            margin-bottom: 30px;
-            max-width: 600px;
-        }
-
-        .hero-right {
-            flex: 1;
-            display: flex;
-            justify-content: flex-end;
-        }
-
-        .hero-img {
-            max-width: 100%;
-            width: 400px;
-            border-radius: 20px;
-            box-shadow: 20px 20px 0px var(--primary-color);
-            transition: var(--transition);
-        }
-
-        .hero-img:hover {
-            transform: translate(-10px, -10px);
-            box-shadow: 30px 30px 0px var(--accent-color);
-        }
-
-        /* --- SECTIONS COMMON --- */
-        section { padding: 80px 0; }
-        
         .section-title {
             font-size: 2.5rem;
             font-weight: 700;
-            color: var(--primary-color);
             margin-bottom: 50px;
             position: relative;
-            display: inline-block;
+            color: var(--text-light);
         }
         
         .section-title::after {
             content: '';
             position: absolute;
-            width: 60px;
+            width: 80px;
             height: 4px;
-            background: var(--accent-color);
+            background: var(--deep-blue-gradient);
             bottom: -10px;
             left: 0;
+            border-radius: 2px;
         }
 
-        /* --- SKILLS / EDUCATION --- */
-        .education {
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 15px;
-            margin-bottom: 20px;
-            box-shadow: var(--shadow);
-            border-left: 5px solid var(--accent-color);
+        .pre-title { color: var(--neon-blue); font-weight: 600; letter-spacing: 1px; margin-bottom: 10px; display: block;}
+
+        /* --- HEADER --- */
+        header {
+            background: rgba(2, 12, 27, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 242, 255, 0.05);
+        }
+
+        .nav { display: flex; justify-content: space-between; align-items: center; }
+        .logo h4 { color: var(--text-light); margin: 0; font-weight: 700; font-size: 1.3rem; }
+        .logo h4 span { color: var(--neon-blue); }
+
+        .nav-links ul { display: flex; align-items: center; gap: 30px; margin: 0; }
+        .nav-links a {
+            color: var(--text-light);
+            font-weight: 500;
+            font-size: 0.95rem;
             transition: var(--transition);
-            display: flex;
-            gap: 20px;
-            align-items: flex-start;
+            position: relative;
         }
 
-        .education:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+        .nav-links a:hover { color: var(--neon-blue); }
+        .nav-links a::after {
+            content: ''; display: block; width: 0; height: 2px;
+            background: var(--neon-blue); transition: width .3s;
+            position: absolute; bottom: -5px; left: 0;
         }
+        .nav-links a:hover::after { width: 100%; }
 
-        .education img {
-            width: 80px;
-            height: 80px;
-            object-fit: contain;
-            flex-shrink: 0;
-        }
-
-        .education-title {
-            font-size: 1.2rem;
+        .btn-glow {
+            background: transparent;
+            color: var(--neon-blue);
+            padding: 10px 25px;
+            border-radius: 50px;
             font-weight: 600;
-            color: var(--primary-color);
-            margin-bottom: 10px;
-        }
-
-        /* --- PORTFOLIO GRID --- */
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        .portofolio {
-            background: var(--card-bg);
-            border-radius: 15px;
+            border: 2px solid var(--neon-blue);
+            position: relative;
             overflow: hidden;
-            box-shadow: var(--shadow);
             transition: var(--transition);
-            border: 1px solid #eee;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 242, 255, 0.2);
+        }
+
+        .btn-glow:hover {
+            background: var(--neon-blue);
+            color: var(--bg-dark);
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.6);
+            transform: translateY(-3px);
+        }
+
+        .burger { display: none; cursor: pointer; }
+        .burger div { width: 25px; height: 3px; background-color: var(--neon-blue); margin: 5px; transition: var(--transition); }
+
+        /* --- HERO --- */
+        .hero {
+            padding-top: 150px;
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            min-height: 95vh;
         }
 
-        .portofolio:hover {
-            transform: translateY(-10px);
+        .hero-left { flex: 1; padding-right: 30px; }
+        .hero-name { font-size: 4rem; font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
+        .hero-desc { font-size: 1.15rem; color: var(--text-muted); margin-bottom: 35px; max-width: 650px; }
+        .hero-desc strong { color: var(--neon-blue); }
+
+        .hero-img-container { flex: 1; display: flex; justify-content: center; position: relative; }
+        .hero-img-container::before {
+            content: ''; position: absolute; width: 250px; height: 250px;
+            background: var(--deep-blue-gradient); filter: blur(90px); opacity: 0.2;
+            z-index: -1; border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%);
         }
 
-        .portofolio-cover {
-            width: 100%;
-            height: 220px;
-            overflow: hidden;
-            background: #eee;
-        }
-
-        .portofolio-cover img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Ensures image fills box nicely */
-            transition: var(--transition);
+        .hero-img {
+            max-width: 280px; width: 100%; border-radius: 20px;
+            border: 2px solid rgba(0, 242, 255, 0.3);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            transform: perspective(1000px) rotateY(-15deg) rotateX(5deg) scale(0.9);
+            filter: grayscale(60%);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
         }
         
-        .portofolio:hover .portofolio-cover img {
-            transform: scale(1.1);
+        .hero-img:hover {
+            transform: perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1.15); 
+            filter: grayscale(0%); border-color: var(--neon-blue);
+            box-shadow: 0 0 25px rgba(0, 242, 255, 0.6), 0 0 50px rgba(0, 123, 255, 0.4);
+            z-index: 10; cursor: pointer;
         }
 
-        .portofolio-info {
-            padding: 25px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
+        .footer-icons a {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 45px; height: 45px; border: 2px solid var(--text-muted);
+            border-radius: 50%; margin-right: 15px; transition: var(--transition);
+        }
+        .footer-icons a svg { fill: var(--text-muted); transition: var(--transition); width: 22px; }
+        .footer-icons a:hover { border-color: var(--neon-blue); background: rgba(0, 242, 255, 0.1); transform: translateY(-3px); }
+        .footer-icons a:hover svg { fill: var(--neon-blue); }
+
+        /* --- CARDS & PORTFOLIO --- */
+        .glass-card {
+            background: var(--glass-bg); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            border: var(--glass-border); box-shadow: var(--glass-shadow);
+            border-radius: 15px; padding: 25px; transition: var(--transition); height: 100%;
+        }
+        .glass-card:hover {
+            transform: translateY(-10px); border-color: var(--neon-blue);
+            box-shadow: 0 15px 30px -10px rgba(0, 242, 255, 0.2);
         }
 
-        .portofolio-title {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 15px;
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .education { display: flex; gap: 20px; align-items: flex-start; }
+        .education img {
+            width: 70px; height: 70px; object-fit: contain;
+            background: rgba(255,255,255,0.05); padding: 10px; border-radius: 10px;
         }
+        .education-title { color: var(--text-light); font-weight: 600; font-size: 1.1rem; margin-bottom: 5px; }
+        .education p small { color: var(--neon-blue); display: block; margin-bottom: 8px; }
+        .education p { color: var(--text-muted); font-size: 0.9rem; margin: 0; }
 
-        .portofolio-title h4 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--primary-color);
-            margin: 0;
-            line-height: 1.4;
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .portofolio { padding: 0; overflow: hidden; display: flex; flex-direction: column; }
+        
+        .portofolio-cover {
+            height: 200px; overflow: hidden; position: relative;
+            border-bottom: 1px solid rgba(0, 242, 255, 0.1);
         }
+        .portofolio-cover::after {
+            content: ''; position: absolute; inset: 0;
+            background: var(--deep-blue-gradient); opacity: 0; transition: var(--transition);
+        }
+        .portofolio:hover .portofolio-cover::after { opacity: 0.3; }
+        .portofolio-cover img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
+        .portofolio:hover .portofolio-cover img { transform: scale(1.1); }
 
-        .portofolio-tags {
-            margin-bottom: 15px;
-        }
+        .portofolio-info { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
+        .portofolio-title { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; }
+        .portofolio-title h4 { color: var(--text-light); font-size: 1rem; font-weight: 700; margin: 0; line-height: 1.4; }
+        .portofolio-link svg { fill: var(--text-muted); transition: var(--transition); }
+        .portofolio-link:hover svg { fill: var(--neon-blue); transform: scale(1.2); }
 
         .portofolio-tags div {
-            font-size: 0.75rem;
-            padding: 4px 12px;
-            background: rgba(30, 144, 255, 0.1);
-            color: var(--accent-color);
-            border-radius: 20px;
-            display: inline-block;
-            margin-right: 5px;
-            margin-bottom: 5px;
-            font-weight: 500;
+            font-size: 0.75rem; padding: 5px 12px;
+            background: rgba(0, 242, 255, 0.1); color: var(--neon-blue); border: 1px solid rgba(0, 242, 255, 0.3);
+            border-radius: 20px; display: inline-block; margin-right: 5px; margin-bottom: 8px; font-weight: 500;
         }
+        .portofolio-info p { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 5px; }
 
-        .portofolio-info p {
-            font-size: 0.85rem;
-            color: #666;
-            margin-bottom: 8px;
-        }
-
-        /* Scrollable Gallery Style (Keep functionality but prettier) */
-        .scroll-container {
-            overflow-x: auto;
-            display: flex;
-            scroll-behavior: smooth;
-        }
+        /* Scrollable Gallery Styles */
+        .scroll-container { display: flex; overflow-x: auto; scroll-behavior: smooth; scrollbar-width: none; }
+        .scroll-container::-webkit-scrollbar { display: none; }
         .scroll-wrapper { display: flex; }
-        .scroll-wrapper img {
-            width: 100%; /* Adjust to fill container */
-            min-width: 100%; /* Force 1 image per view width of card */
-            height: 220px;
-            object-fit: cover;
+        .scroll-wrapper img { min-width: 100%; height: 200px; object-fit: cover; border-right: 2px solid var(--bg-dark);}
+
+        /* --- CONTACT --- */
+        .contact-container { display: flex; gap: 50px; }
+        .contact-left { flex: 1.5; }
+        .contact-right { flex: 1; display: flex; flex-direction: column; gap: 25px;}
+
+        .contact-form input, .contact-form textarea {
+            width: 100%; padding: 15px; margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(0, 242, 255, 0.2);
+            border-radius: 10px; color: var(--text-light); font-family: inherit; transition: var(--transition);
         }
-
-        /* --- CONTACT SECTION --- */
-        .contact {
-            background: #fff;
-            padding: 50px;
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-            display: flex;
-            gap: 50px;
-        }
-
-        .contact-left { flex: 1; }
-        .contact-right { flex: 1; }
-
-        .contact-form input, 
-        .contact-form textarea {
-            width: 100%;
-            padding: 15px;
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            background: #f9f9f9;
-            font-family: inherit;
-        }
-
-        .contact-form input:focus, 
-        .contact-form textarea:focus {
-            outline: none;
-            border-color: var(--accent-color);
-            background: #fff;
+        .contact-form input:focus, .contact-form textarea:focus {
+            outline: none; border-color: var(--neon-blue); background: rgba(0, 242, 255, 0.05);
+            box-shadow: 0 0 10px rgba(0, 242, 255, 0.1);
         }
 
         .btn-submit {
-            background: var(--primary-color);
-            color: #fff;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
+            background: var(--deep-blue-gradient); color: var(--bg-dark);
+            border: none; padding: 15px 35px; border-radius: 50px;
+            font-weight: 700; font-size: 1rem; cursor: pointer;
+            transition: var(--transition); box-shadow: 0 5px 15px rgba(0, 242, 255, 0.3);
         }
-
-        .btn-submit:hover {
-            background: var(--accent-color);
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 30px;
-        }
+        .btn-submit:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0, 242, 255, 0.5); }
 
         .contact-item-icon {
-            width: 50px;
-            height: 50px;
-            background: rgba(30, 144, 255, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 20px;
+            width: 50px; height: 50px; background: rgba(0, 242, 255, 0.1);
+            border: 1px solid rgba(0, 242, 255, 0.3); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; margin-right: 15px; flex-shrink: 0;
         }
-        
-        .contact-item-icon svg {
-            fill: var(--accent-color);
-            width: 24px;
-            height: 24px;
-        }
+        .contact-item-icon svg { fill: var(--neon-blue); width: 22px; }
+        .contact-item-detail h4 { color: var(--text-light); margin-bottom: 5px; }
+        .contact-item-detail p { color: var(--text-muted); margin: 0; }
 
-        .contact-item-detail h4 {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        /* --- FOOTER --- */
         footer {
-            background: var(--primary-color);
-            color: #fff;
-            text-align: center;
-            padding: 30px;
-            margin-top: 50px;
+            background: var(--bg-secondary); text-align: center; padding: 30px; margin-top: 80px;
+            border-top: 1px solid rgba(0, 242, 255, 0.05); color: var(--text-muted);
         }
+        footer span { color: var(--neon-blue); }
 
-        /* --- RESPONSIVE MEDIA QUERIES --- */
         @media (max-width: 1024px) {
             .grid-3 { grid-template-columns: repeat(2, 1fr); }
+            .hero-name { font-size: 3rem; }
         }
 
         @media (max-width: 768px) {
             .nav-links ul {
-                position: absolute;
-                right: 0;
-                top: 70px;
-                background-color: var(--primary-color);
-                flex-direction: column;
-                width: 100%;
-                padding: 20px 0;
-                transform: translateY(-150%);
-                transition: var(--transition);
-                z-index: 999;
+                position: absolute; right: 0; top: 70px;
+                background: rgba(2, 12, 27, 0.95); backdrop-filter: blur(15px);
+                flex-direction: column; width: 100%; padding: 30px 0;
+                transform: translateY(-150%); transition: var(--transition);
+                border-bottom: 1px solid var(--neon-blue);
             }
-
-            .nav-links ul.nav-active {
-                transform: translateY(0%);
-                box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-            }
-
+            .nav-links ul.nav-active { transform: translateY(0%); }
             .burger { display: block; }
-            
-            .hero {
-                flex-direction: column-reverse;
-                text-align: center;
-                justify-content: center;
-                padding-top: 100px;
-            }
-
-            .hero-left { padding-right: 0; }
-            .hero-right { justify-content: center; margin-bottom: 30px; }
-            .hero-name { font-size: 2.5rem; }
-            
+            .hero { flex-direction: column-reverse; text-align: center; padding-top: 120px; }
+            .hero-left { padding-right: 0; margin-top: 40px; }
+            .hero-right { justify-content: center; width: 100%; }
+            .hero-name { font-size: 2.8rem; }
+            .footer-icons { justify-content: center; display: flex; }
             .grid-3 { grid-template-columns: 1fr; }
-            
-            .contact { flex-direction: column; padding: 30px; }
-            
-            .education {
-                flex-direction: column;
-                text-align: center;
-                align-items: center;
-            }
+            .contact-container { flex-direction: column; }
         }
     </style>
 </head>
@@ -465,310 +304,404 @@
   <div class="main-container">
     <div class="nav">
       <div class="logo">
-        <h4>Muhammad Faisal S.Tr.T.</h4>
+        <h4>Muhammad<span>Faisal</span>.</h4>
       </div>
 
       <nav class="nav-links">
         <ul>
-          <li><a href="#skills">Certification</a></li>
-          <li><a href="#portofolios">Portofolio</a></li>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#portofolios">Portfolio</a></li>
           <li><a href="#contact">Contact</a></li>
           <li>
             <a href="./CV_Muhammad_Faisal.pdf" download="CV_Muhammad_Faisal.pdf">
-              <button type="button" class="btn-custom">Download CV</button>
+              <button type="button" class="btn-glow">Download CV</button>
             </a>
           </li>
         </ul>
       </nav>
 
       <div class="burger" id="burger">
-        <div></div>
-        <div></div>
-        <div></div>
+        <div></div><div></div><div></div>
       </div>
     </div>
   </div>
 </header>
 
-<section id="hero" class="hero main-container">
-  <div class="hero-left">
-    <h3 class="pre-title">Hello, I'm</h3>
-    <h1 class="hero-name">Muhammad<span> Faisal </span></h1>
+<section id="hero" class="main-container hero-container">
+  <div class="hero-left reveal-left">
+    <span class="pre-title">Hi there, I am</span>
+    <h1 class="hero-name">Muhammad <span class="gradient-text">Faisal</span></h1>
     <p class="hero-desc">
-      Lulusan Teknik Informatika dan Komputer (PNUP). Berpengalaman dalam 
-      <strong>Web Development</strong>, <strong>Data Analytics</strong>, dan <strong>Networking</strong>. 
-      Siap menciptakan solusi digital yang inovatif.
+      Nama saya Muhammad Faisal, lulusan Teknik Komputer dan Jaringan dari Politeknik Negeri Ujung Pandang (September 2021 – Agustus 2025). Selama menempuh pendidikan, saya aktif dalam berbagai proyek teknologi dan pelatihan, di mana saya memfokuskan pengembangan diri dan minat karier profesional saya pada bidang <strong>Web Development</strong> dan <strong>Pengolahan Data</strong>.
     </p>
 
     <div class="footer-icons">
       <a href="https://www.linkedin.com/in/muhammad-faisal-qq/" target="_blank">
-        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#1e90ff" viewBox="0 0 24 24">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
         </svg>
       </a>
-      &nbsp;
       <a href="https://github.com/CityFactory" target="_blank">
-        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#1e90ff" viewBox="0 0 24 24">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
         </svg>
       </a>
     </div>
   </div>
 
-  <div class="hero-right">
-    <img src="./images/foto3.png" alt="Foto Muhammad Faisal" class="hero-img">
+  <div class="hero-right hero-img-container reveal-right">
+    <img src="./images/fotofaisal.png" alt="Foto Muhammad Faisal" class="hero-img">
   </div>
 </section>
 
 <section id="skills" class="main-container">
-    <h3 class="pre-title">Learning Path</h3>
-    <h1 class="section-title">Training & Certification</h1>
+    <span class="pre-title reveal-top">Learning Path</span>
+    <h1 class="section-title reveal-top">Training & <span class="gradient-text">Certification</span></h1>
 
-    <div class="skills-grid">
-        <div class="education">
+    <div class="skills-grid reveal-bottom">
+        <div class="glass-card education">
             <img src="images/web.png" alt="Web Programming">
             <div>
-                <h4 class="education-title">Web Programming Development (VSGA 2025)</h4>
-                <p><small><strong>16 - 18 Juni 2025</strong> | Kominfo Digital Talent Scholarship</small></p>
-                <p>Pengembangan web modern menggunakan HTML, CSS, JavaScript, dan Framework.</p>
+                <h4 class="education-title">Web Programming Development</h4>
+                <p><small>VSGA Digital Talent Scholarship 2025</small></p>
+                <p>Pengembangan web modern full-stack dengan framework terkini.</p>
             </div>
         </div>
 
-        <div class="education">
+        <div class="glass-card education">
             <img src="images/associate.png" alt="Data Scientist">
             <div>
-                <h4 class="education-title">Associate Data Scientist (VSGA 2024)</h4>
-                <p><small><strong>21 - 26 Oktober 2024</strong> | Kominfo Digital Talent Scholarship</small></p>
-                <p>Preprocessing data, Machine Learning dasar, dan Visualisasi Data dengan Python.</p>
+                <h4 class="education-title">Associate Data Scientist</h4>
+                <p><small>VSGA Digital Talent Scholarship 2024</small></p>
+                <p>Machine Learning, Preprocessing, dan Visualisasi Data Python.</p>
             </div>
         </div>
 
-        <div class="education">
+        <div class="glass-card education">
             <img src="images/pemasarandigital.png" alt="Pemasaran Digital">
             <div>
-                <h4 class="education-title">Pemasaran Digital Dasar (DEA 2024)</h4>
-                <p><small><strong>4 - 5 September 2024</strong> | Kominfo</small></p>
-                <p>Strategi SEO, Social Media Marketing, dan Analisis Pasar Online.</p>
+                <h4 class="education-title">Pemasaran Digital Dasar</h4>
+                <p><small>DEA Digital Talent Scholarship 2024</small></p>
+                <p>Strategi SEO, SEM, dan Social Media Marketing analytics.</p>
             </div>
         </div>
         
-        <div class="education">
+        <div class="glass-card education">
             <img src="images/dataanalis.png" alt="Data Analytics">
             <div>
-                <h4 class="education-title">Data Analytics (FGA 2024)</h4>
-                <p><small><strong>Apr - Jul 2024</strong> | Kominfo</small></p>
-                <p>Pengumpulan, pembersihan, dan statistik data untuk pengambilan keputusan.</p>
+                <h4 class="education-title">Data Analytics Professional</h4>
+                <p><small>FGA Digital Talent Scholarship 2024</small></p>
+                <p>Analisis statistik mendalam untuk pengambilan keputusan bisnis.</p>
             </div>
         </div>
 
-        <div class="education">
+        <div class="glass-card education">
             <img src="images/python.png" alt="Python">
             <div>
-                <h4 class="education-title">Aguna Course (Python Fundamental)</h4>
-                <p><small>Mei 2024</small></p>
-                <p>Dasar pemrograman Python, sintaksis, dan struktur data.</p>
+                <h4 class="education-title">Python Fundamental</h4>
+                <p><small>Aguna Course (Mei 2024)</small></p>
+                <p>Penguasaan struktur data dan algoritma dasar Python.</p>
             </div>
         </div>
 
-        <div class="education">
+        <div class="glass-card education">
             <img src="images/revo.png" alt="Revo">
             <div>
-                <h4 class="education-title">Revo Mini Course (Data Analytics)</h4>
-                <p><small>Mei 2024</small></p>
-                <p>Fundamental analitik dan visualisasi data bisnis.</p>
+                <h4 class="education-title">Data Analytics Mini Course</h4>
+                <p><small>RevoU (Mei 2024)</small></p>
+                <p>Fundamental visualisasi data bisnis dan storytelling.</p>
             </div>
         </div>
     </div>
 </section>
 
 <section id="portofolios" class="main-container">
-    <h3 class="pre-title">My Works</h3>
-    <h1 class="section-title">Featured Portfolio</h1>
+    <span class="pre-title reveal-top">My Works</span>
+    <h1 class="section-title reveal-top">Featured <span class="gradient-text">Portfolio</span></h1>
     
-    <div class="grid-3">
-        <div class="portofolio">
+    <div class="grid-3 reveal-bottom">
+        
+        <div class="glass-card portofolio">
             <div class="portofolio-cover">
                 <img src="./images/iot.png" alt="IoT Project">
             </div>
             <div class="portofolio-info">
                 <div class="portofolio-title">
                     <h4>IOT | OTA Update System</h4>
-                    <a href="https://github.com/CityFactory/iot.git" target="_blank">
-                        <svg width="20" height="20" viewBox="0 0 24 24"><path d="M3 0l18 15h-11.081l-6.919 9z"/></svg>
+                    <a href="https://github.com/CityFactory/iot.git" target="_blank" class="portofolio-link">
+                        <svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 0l18 15h-11.081l-6.919 9z"/></svg>
                     </a>
                 </div>
                 <div class="portofolio-tags">
                     <div>Python</div><div>MQTT</div><div>ESP8266</div>
                 </div>
-                <p>Sistem update firmware over-the-air (OTA) untuk perangkat IoT jarak jauh.</p>
+                <p>Sistem update firmware over-the-air (OTA) untuk perangkat IoT.</p>
             </div>
         </div>
 
-        <div class="portofolio">
+        <div class="glass-card portofolio">
             <div class="portofolio-cover">
                 <img src="./images/mobile.png" alt="Mobile App">
             </div>
             <div class="portofolio-info">
                 <div class="portofolio-title">
-                    <h4>Mobile App | UMKM Dapur Kenyang</h4>
-                    <a href="https://github.com/CityFactory/aplikasi.git" target="_blank">
-                        <svg width="20" height="20" viewBox="0 0 24 24"><path d="M3 0l18 15h-11.081l-6.919 9z"/></svg>
+                    <h4>Mobile App | UMKM System</h4>
+                    <a href="https://github.com/CityFactory/aplikasi.git" target="_blank" class="portofolio-link">
+                        <svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 0l18 15h-11.081l-6.919 9z"/></svg>
                     </a>
                 </div>
                 <div class="portofolio-tags">
                     <div>Java</div><div>XML</div><div>SQLite</div>
                 </div>
-                <p>Aplikasi manajemen produk UMKM Android dengan fitur inventory.</p>
+                <p>Aplikasi Android manajemen produk dan inventaris UMKM Dapur Kenyang.</p>
             </div>
         </div>
 
-        <div class="portofolio">
+        <div class="glass-card portofolio">
             <div class="portofolio-cover">
                 <img src="./images/web.png.jpg" alt="SIMPRODI">
             </div>
             <div class="portofolio-info">
                 <div class="portofolio-title">
-                    <h4>Web | SIMPRODI TKJ</h4>
-                    <a href="https://github.com/CityFactory/simprodi.git" target="_blank">
-                        <svg width="20" height="20" viewBox="0 0 24 24"><path d="M3 0l18 15h-11.081l-6.919 9z"/></svg>
+                    <h4>Web App | SIMPRODI TKJ</h4>
+                    <a href="https://github.com/CityFactory/simprodi.git" target="_blank" class="portofolio-link">
+                        <svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 0l18 15h-11.081l-6.919 9z"/></svg>
                     </a>
                 </div>
                 <div class="portofolio-tags">
                     <div>React</div><div>Node.js</div><div>MySQL</div>
                 </div>
-                <p>Sistem Informasi Manajemen Program Studi untuk monitoring dosen.</p>
+                <p>Sistem Informasi Manajemen Program Studi full-stack untuk monitoring akademik.</p>
             </div>
         </div>
 
-        <div class="portofolio">
+        <div class="glass-card portofolio">
             <div class="portofolio-cover">
                 <img src="./images/api.png" alt="API Food">
             </div>
             <div class="portofolio-info">
                 <div class="portofolio-title">
-                    <h4>API | Makanan Khas Sulsel</h4>
-                    <a href="https://github.com/CityFactory/API.git" target="_blank">
-                        <svg width="20" height="20" viewBox="0 0 24 24"><path d="M3 0l18 15h-11.081l-6.919 9z"/></svg>
+                    <h4>Rest API | Kuliner Sulsel</h4>
+                    <a href="https://github.com/CityFactory/API.git" target="_blank" class="portofolio-link">
+                        <svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 0l18 15h-11.081l-6.919 9z"/></svg>
                     </a>
                 </div>
                 <div class="portofolio-tags">
-                    <div>React</div><div>Node.js</div><div>RestAPI</div>
+                    <div>React</div><div>Node.js</div><div>Express</div>
                 </div>
-                <p>Integrasi API kuliner lokal dengan antarmuka interaktif.</p>
+                <p>Pengembangan dan integrasi API data kuliner khas dengan frontend interaktif.</p>
             </div>
         </div>
 
-        <div class="portofolio">
+        <div class="glass-card portofolio">
             <div class="portofolio-cover">
                 <img src="./images/rpl.png" alt="BaBeYaGun">
             </div>
             <div class="portofolio-info">
                 <div class="portofolio-title">
-                    <h4>Web | BaBeYaGun (Barang Bekas)</h4>
-                    <a href="https://github.com/CityFactory/rpl.git" target="_blank">
-                        <svg width="20" height="20" viewBox="0 0 24 24"><path d="M3 0l18 15h-11.081l-6.919 9z"/></svg>
+                    <h4>Web | BaBeYaGun Marketplace</h4>
+                    <a href="https://github.com/CityFactory/rpl.git" target="_blank" class="portofolio-link">
+                        <svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 0l18 15h-11.081l-6.919 9z"/></svg>
                     </a>
                 </div>
                 <div class="portofolio-tags">
                     <div>PHP</div><div>MySQL</div><div>Bootstrap</div>
                 </div>
-                <p>Marketplace sederhana untuk jual beli barang bekas layak guna.</p>
+                <p>Platform jual beli barang bekas layak guna dengan fitur CRUD lengkap.</p>
             </div>
         </div>
 
-        <div class="portofolio">
+        <div class="glass-card portofolio">
             <div class="portofolio-cover scroll-container">
                 <div class="scroll-wrapper">
                     <img src="./images/jaringan1.jpg">
                     <img src="./images/jaringan2.jpg">
                     <img src="./images/jaringan3.jpg">
+                    <img src="./images/jaringan4.jpg">
+                    <img src="./images/jaringan5.jpg">
                 </div>
             </div>
             <div class="portofolio-info">
                 <div class="portofolio-title">
-                    <h4>Web | Penjualan Alat Jaringan</h4>
-                    <a href="#" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M3 0l18 15h-11.081l-6.919 9z"/></svg></a>
+                    <h4>E-Commerce | Alat Jaringan</h4>
+                    <a href="#" target="_blank" class="portofolio-link"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 0l18 15h-11.081l-6.919 9z"/></svg></a>
                 </div>
                 <div class="portofolio-tags">
-                    <div>WordPress</div>
+                    <div>WordPress</div><div>WooCommerce</div>
                 </div>
-                <p>Katalog online perangkat jaringan komputer.</p>
+                <p>Website katalog dan penjualan perangkat jaringan komputer online.</p>
             </div>
         </div>
 
-        <div class="portofolio">
+        <div class="glass-card portofolio">
             <div class="portofolio-cover scroll-container">
                 <div class="scroll-wrapper">
                     <img src="./images/portfolio1.jpg">
                     <img src="./images/portfolio2.jpg">
                     <img src="./images/portfolio3.jpg">
+                    <img src="./images/portfolio6.jpg">
                 </div>
             </div>
             <div class="portofolio-info">
                 <div class="portofolio-title">
-                    <h4>Web | Bento Grid Portfolio</h4>
-                    <a href="#" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M3 0l18 15h-11.081l-6.919 9z"/></svg></a>
+                    <h4>Modern Web | Bento Grid Layout</h4>
+                    <a href="#" target="_blank" class="portofolio-link"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 0l18 15h-11.081l-6.919 9z"/></svg></a>
                 </div>
-                <div class="portofolio-tags"><div>WordPress</div></div>
-                <p>Desain portfolio modern dengan gaya Bento Grid.</p>
+                <div class="portofolio-tags"><div>CSS Grid</div><div>UI Design</div></div>
+                <p>Eksplorasi desain portfolio modern menggunakan tata letak Bento Grid.</p>
             </div>
         </div>
 
-        <div class="portofolio">
+        <div class="glass-card portofolio">
             <div class="portofolio-cover scroll-container">
                 <div class="scroll-wrapper">
                     <img src="./images/cleaning1.jpg">
                     <img src="./images/cleaning2.jpg">
                     <img src="./images/cleaning3.jpg">
+                    <img src="./images/cleaning4.jpg">
+                    <img src="./images/cleaning5.jpg">
                 </div>
             </div>
             <div class="portofolio-info">
                 <div class="portofolio-title">
-                    <h4>Web | Jasa Cleaning Service</h4>
-                    <a href="#" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M3 0l18 15h-11.081l-6.919 9z"/></svg></a>
+                    <h4>Landing Page | Cleaning Service</h4>
+                    <a href="#" target="_blank" class="portofolio-link"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 0l18 15h-11.081l-6.919 9z"/></svg></a>
                 </div>
-                <div class="portofolio-tags"><div>WordPress</div></div>
-                <p>Landing page penawaran jasa kebersihan profesional.</p>
+                <div class="portofolio-tags"><div>WordPress</div><div>Elementor</div></div>
+                <p>Website profil bisnis untuk penawaran jasa kebersihan profesional.</p>
             </div>
         </div>
 
-        <div class="portofolio">
+        <div class="glass-card portofolio">
+            <div class="portofolio-cover scroll-container">
+                <div class="scroll-wrapper">
+                    <img src="./images/motor1.jpg">
+                    <img src="./images/motor2.jpg">
+                    <img src="./images/motor3.jpg">
+                    <img src="./images/motor4.jpg">
+                    <img src="./images/motor5.jpg">
+                </div>
+            </div>
+            <div class="portofolio-info">
+                <div class="portofolio-title">
+                    <h4>Web | Rental Motor</h4>
+                    <a href="#" target="_blank" class="portofolio-link"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 0l18 15h-11.081l-6.919 9z"/></svg></a>
+                </div>
+                <div class="portofolio-tags"><div>WordPress</div></div>
+                <p>Sistem informasi penyewaan motor dengan katalog unit.</p>
+            </div>
+        </div>
+
+        <div class="glass-card portofolio">
+            <div class="portofolio-cover scroll-container">
+                <div class="scroll-wrapper">
+                    <img src="./images/kue1.jpg">
+                    <img src="./images/kue2.jpg">
+                    <img src="./images/kue3.jpg">
+                    <img src="./images/kue4.jpg">
+                    <img src="./images/kue5.jpg">
+                </div>
+            </div>
+            <div class="portofolio-info">
+                <div class="portofolio-title">
+                    <h4>Web | Toko Kue Tradisional</h4>
+                    <a href="#" target="_blank" class="portofolio-link"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 0l18 15h-11.081l-6.919 9z"/></svg></a>
+                </div>
+                <div class="portofolio-tags"><div>WordPress</div></div>
+                <p>Website e-commerce untuk penjualan aneka kue tradisional.</p>
+            </div>
+        </div>
+
+        <div class="glass-card portofolio">
+            <div class="portofolio-cover scroll-container">
+                <div class="scroll-wrapper">
+                    <img src="./images/tenda1.jpg">
+                    <img src="./images/tenda2.jpg">
+                    <img src="./images/tenda3.jpg">
+                    <img src="./images/tenda4.jpg">
+                    <img src="./images/tenda5.jpg">
+                </div>
+            </div>
+            <div class="portofolio-info">
+                <div class="portofolio-title">
+                    <h4>Web | Rental Tenda</h4>
+                    <a href="#" target="_blank" class="portofolio-link"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 0l18 15h-11.081l-6.919 9z"/></svg></a>
+                </div>
+                <div class="portofolio-tags"><div>WordPress</div></div>
+                <p>Sistem informasi jasa penyewaan tenda untuk berbagai acara.</p>
+            </div>
+        </div>
+
+        <div class="glass-card portofolio">
             <div class="portofolio-cover scroll-container">
                 <div class="scroll-wrapper">
                     <img src="./images/magang1.png">
                     <img src="./images/magang2.png">
                     <img src="./images/magang3.png">
+                    <img src="./images/magang4.png">
                 </div>
             </div>
             <div class="portofolio-info">
                 <div class="portofolio-title">
-                    <h4>Data Viz | Peserta DTS Indonesia Timur</h4>
-                    <a href="#" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M3 0l18 15h-11.081l-6.919 9z"/></svg></a>
+                    <h4>Data Viz | Dashboard DTS</h4>
+                    <a href="#" target="_blank" class="portofolio-link"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 0l18 15h-11.081l-6.919 9z"/></svg></a>
                 </div>
                 <div class="portofolio-tags">
-                    <div>Looker Studio</div><div>Firebase</div>
+                    <div>Looker Studio</div><div>Google Sheets</div>
                 </div>
-                <p>Dashboard interaktif monitoring peserta Digital Talent Scholarship.</p>
+                <p>Dashboard interaktif monitoring data peserta DTS wilayah Indonesia Timur.</p>
+            </div>
+        </div>
+
+        <div class="glass-card portofolio">
+            <div class="portofolio-cover scroll-container">
+                <div class="scroll-wrapper">
+                    <img src="./images/websekolah1.png">
+                    <img src="./images/websekolah2.png">
+                    <img src="./images/websekolah3.png">
+                    <img src="./images/websekolah4.png">
+                    <img src="./images/websekolah5.png">
+                    <img src="./images/websekolah6.png">
+                    <img src="./images/websekolah7.png">
+                </div>
+            </div>
+            <div class="portofolio-info">
+                <div class="portofolio-title">
+                    <h4>Web | Sistem Informasi Sekolah</h4>
+                    <a href="https://github.com/CityFactory/websekolah.git" target="_blank" class="portofolio-link"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 0l18 15h-11.081l-6.919 9z"/></svg></a>
+                </div>
+                <div class="portofolio-tags">
+                    <div>PHP</div><div>Javascript</div>
+                </div>
+                <p>Sistem manajemen data siswa, guru, dan jadwal sekolah berbasis web.</p>
             </div>
         </div>
         
-        <div class="portofolio">
+        <div class="glass-card portofolio">
              <div class="portofolio-cover scroll-container">
                 <div class="scroll-wrapper">
                     <img src="./images/ta1.png">
                     <img src="./images/ta2.png">
                     <img src="./images/ta3.png">
+                    <img src="./images/ta4.png">
+                    <img src="./images/ta5.png">
+                    <img src="./images/ta6.png">
+                    <img src="./images/ta7.png">
+                    <img src="./images/ta8.png">
+                    <img src="./images/ta9.png">
+                    <img src="./images/ta10.png">
                 </div>
             </div>
             <div class="portofolio-info">
                 <div class="portofolio-title">
-                    <h4>Tugas Akhir | SPK Vokasi Disabilitas</h4>
-                    <a href="https://github.com/CityFactory/ahpdisabilitas.git" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M3 0l18 15h-11.081l-6.919 9z"/></svg></a>
+                    <h4>Final Project | SPK AHP Vokasi</h4>
+                    <a href="https://github.com/CityFactory/ahpdisabilitas.git" target="_blank" class="portofolio-link"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 0l18 15h-11.081l-6.919 9z"/></svg></a>
                 </div>
                 <div class="portofolio-tags">
-                    <div>Laravel</div><div>AHP</div>
+                    <div>Laravel</div><div>AHP Method</div><div>MySQL</div>
                 </div>
-                <p>Sistem Pendukung Keputusan penentuan minat vokasi menggunakan metode AHP.</p>
+                <p>Sistem Pendukung Keputusan penentuan rekomendasi vokasi disabilitas.</p>
             </div>
         </div>
 
@@ -776,46 +709,47 @@
 </section>
 
 <section id="contact" class="main-container">
-    <div class="contact">
+    <div class="contact-container reveal-bottom">
         <div class="contact-left">
-            <h1 class="section-title" style="margin-top: 0;">Get In Touch</h1>
-            <p style="margin-bottom: 30px;">Silakan hubungi saya untuk kolaborasi proyek atau sekadar berdiskusi.</p>
+            <span class="pre-title">Contact</span>
+            <h1 class="section-title">Get In <span class="gradient-text">Touch</span></h1>
+            <p style="color: var(--text-muted); margin-bottom: 30px;">Tertarik untuk berkolaborasi atau punya pertanyaan? Kirimkan pesan Anda, dan mari ciptakan sesuatu yang luar biasa bersama.</p>
             
             <form class="contact-form" action="https://formspree.io/f/mknddwol" method="POST">
-                <input type="text" placeholder="Nama Lengkap" name="name" required>
-                <input type="email" placeholder="Alamat Email" name="email" required>
-                <textarea name="message" id="message" placeholder="Tulis Pesan Anda..." cols="30" rows="5" required></textarea>
-                <button class="btn-submit">Kirim Pesan</button>
+                <input type="text" placeholder="Nama Lengkap Anda" name="name" required>
+                <input type="email" placeholder="Alamat Email Aktif" name="email" required>
+                <textarea name="message" id="message" placeholder="Tulis Pesan Anda Disini..." cols="30" rows="6" required></textarea>
+                <button class="btn-submit">Kirim Pesan Sekarang</button>
             </form>
         </div>
         
         <div class="contact-right">
-            <div class="contact-item">
+            <div class="glass-card contact-item">
                 <div class="contact-item-icon">
                     <svg viewBox="0 0 24 24"><path d="M12 3c2.131 0 4 1.73 4 3.702 0 2.05-1.714 4.941-4 8.561-2.286-3.62-4-6.511-4-8.561 0-1.972 1.869-3.702 4-3.702zm0-2c-3.148 0-6 2.553-6 5.702 0 3.148 2.602 6.907 6 12.298 3.398-5.391 6-9.15 6-12.298 0-3.149-2.851-5.702-6-5.702zm0 8c-1.105 0-2-.895-2-2s.895-2 2-2 2 .895 2 2-.895 2-2 2zm8 6h-3.135c-.385.641-.798 1.309-1.232 2h3.131l.5 1h-4.264l-.344.544-.289.456h.558l.858 2h-7.488l.858-2h.479l-.289-.456-.343-.544h-2.042l-1.011-1h2.42c-.435-.691-.848-1.359-1.232-2h-3.135l-4 8h24l-4-8zm-12.794 6h-3.97l1.764-3.528 1.516 1.528h1.549l-.859 2zm8.808-2h3.75l1 2h-3.892l-.858-2z"/></svg>
                 </div>
                 <div class="contact-item-detail">
-                    <h4>Lokasi</h4>
-                    <p>Makassar, Sulawesi Selatan</p>
+                    <h4>Lokasi Base</h4>
+                    <p>Makassar, Sulawesi Selatan, ID</p>
                 </div>
             </div>
 
-            <div class="contact-item">
+            <div class="glass-card contact-item" style="display: flex; align-items: center;">
                 <div class="contact-item-icon">
                     <svg viewBox="0 0 24 24"><path d="M8.26 1.289l-1.564.772c-5.793 3.02 2.798 20.944 9.31 20.944.46 0 .904-.094 1.317-.284l1.542-.755-2.898-5.594-1.54.754c-.181.087-.384.134-.597.134-2.561 0-6.841-8.204-4.241-9.596l1.546-.763-2.875-5.612zm7.746 22.711c-5.68 0-12.221-11.114-12.221-17.832 0-2.419.833-4.146 2.457-4.992l2.382-1.176 3.857 7.347-2.437 1.201c-1.439.772 2.409 8.424 3.956 7.68l2.399-1.179 3.816 7.36s-2.36 1.162-2.476 1.215c-.547.251-1.129.376-1.733.376"/></svg>
                 </div>
                 <div class="contact-item-detail">
-                    <h4>WhatsApp</h4>
+                    <h4>WhatsApp / Phone</h4>
                     <p>+62 853-4606-4591</p>
                 </div>
             </div>
 
-            <div class="contact-item">
+            <div class="glass-card contact-item" style="display: flex; align-items: center;">
                 <div class="contact-item-icon">
                     <svg viewBox="0 0 24 24"><path d="M12 .02c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6.99 6.98l-6.99 5.666-6.991-5.666h13.981zm.01 10h-14v-8.505l7 5.673 7-5.672v8.504z"/></svg>
                 </div>
                 <div class="contact-item-detail">
-                    <h4>Email</h4>
+                    <h4>Email Address</h4>
                     <p>muhammadfaisal2910@gmail.com</p>
                 </div>
             </div>
@@ -824,7 +758,7 @@
 </section>
 
 <footer>
-    <p>&copy; 2024 - Made with ❤️ by Muhammad Faisal</p>
+    <p>Built with <span style="color: var(--neon-blue);">Wait and Bleed</span> by <strong>Muhammad Faisal</strong> &copy; 2024</p>
 </footer>
 
 <script>
@@ -838,13 +772,27 @@
         burger.classList.toggle('toggle');
     });
 
-    // Close mobile menu when link is clicked
     links.forEach(link => {
         link.addEventListener('click', () => {
             navLinks.classList.remove('nav-active');
             burger.classList.remove('toggle');
         });
     });
+
+    // --- SCROLL REVEAL ANIMATION CONFIGURATION ---
+    const sr = ScrollReveal({
+        origin: 'top',
+        distance: '60px',
+        duration: 2000,
+        delay: 200,
+        reset: false /* Animasi hanya sekali saat scroll ke bawah */
+    });
+
+    sr.reveal('.hero-left, .reveal-left', { origin: 'left' });
+    sr.reveal('.hero-right, .reveal-right', { origin: 'right', delay: 400 });
+    sr.reveal('.section-title, .pre-title, .reveal-top', { interval: 200 });
+    sr.reveal('.skills-grid, .grid-3, .contact-container, .reveal-bottom', { origin: 'bottom', interval: 200 });
+
 </script>
 
 </body>
