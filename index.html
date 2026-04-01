@@ -1,799 +1,1691 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammad Faisal | Tech Portfolio</title>
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/scrollreveal"></script>
-    
-    <style>
-        /* --- GLOBAL VARIABLES & THEME (DOMINAN BIRU) --- */
-        :root {
-            --bg-dark: #020c1b; 
-            --bg-secondary: #0a192f; 
-            --primary-blue: #007bff; 
-            --neon-blue: #00f2ff; 
-            --deep-blue-gradient: linear-gradient(135deg, #007bff, #00f2ff); 
-            
-            --text-light: #e6f1ff; 
-            --text-muted: #8892b0; 
-            
-            --glass-bg: rgba(10, 25, 47, 0.7); 
-            --glass-border: 1px solid rgba(0, 242, 255, 0.1); 
-            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); 
-            
-            --transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Muhammad Faisal | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-soft: rgba(10, 17, 40, 0.72);
+      --surface: rgba(14, 23, 51, 0.76);
+      --surface-2: rgba(8, 16, 38, 0.95);
+      --line: rgba(116, 200, 255, 0.16);
+      --line-strong: rgba(91, 198, 255, 0.35);
+      --text: #edf6ff;
+      --muted: #9db4d0;
+      --brand: #66d8ff;
+      --brand-2: #7a7cff;
+      --glow: linear-gradient(135deg, #66d8ff, #7a7cff 70%, #7ef2c3);
+      --shadow: 0 20px 60px rgba(0,0,0,.35);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 16px;
+      --container: 1320px;
+    }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 15%, rgba(102,216,255,.10), transparent 28%),
+        radial-gradient(circle at 85% 10%, rgba(122,124,255,.10), transparent 24%),
+        radial-gradient(circle at 75% 80%, rgba(126,242,195,.08), transparent 22%),
+        linear-gradient(180deg, #040716 0%, #071022 100%);
+      min-height: 100vh;
+      line-height: 1.65;
+    }
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-            line-height: 1.6;
-            background-image: 
-                radial-gradient(circle at 20% 20%, rgba(0, 123, 255, 0.05) 0%, transparent 30%),
-                radial-gradient(circle at 80% 80%, rgba(0, 242, 255, 0.05) 0%, transparent 30%);
-            background-attachment: fixed;
-        }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,.55), transparent 85%);
+      z-index: -1;
+    }
 
-        a { text-decoration: none !important; color: inherit; }
-        ul { list-style: none; }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    button { font: inherit; }
 
-        .main-container { width: 90%; max-width: 1200px; margin: 0 auto; }
-        section { padding: 100px 0; }
+    .container {
+      width: min(92%, var(--container));
+      margin-inline: auto;
+    }
 
-        /* --- TYPOGRAPHY --- */
-        .gradient-text {
-            background: var(--deep-blue-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: inline-block;
-        }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      backdrop-filter: blur(18px);
+      background: rgba(4, 7, 22, 0.72);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
 
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 50px;
-            position: relative;
-            color: var(--text-light);
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            width: 80px;
-            height: 4px;
-            background: var(--deep-blue-gradient);
-            bottom: -10px;
-            left: 0;
-            border-radius: 2px;
-        }
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
 
-        .pre-title { color: var(--neon-blue); font-weight: 600; letter-spacing: 1px; margin-bottom: 10px; display: block;}
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
 
-        /* --- HEADER --- */
-        header {
-            background: rgba(2, 12, 27, 0.85);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            padding: 15px 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(0, 242, 255, 0.05);
-        }
+    .brand-badge {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: var(--glow);
+      display: grid;
+      place-items: center;
+      color: #08101f;
+      font-weight: 900;
+      box-shadow: 0 0 0 6px rgba(102,216,255,.08);
+    }
 
-        .nav { display: flex; justify-content: space-between; align-items: center; }
-        .logo h4 { color: var(--text-light); margin: 0; font-weight: 700; font-size: 1.3rem; }
-        .logo h4 span { color: var(--neon-blue); }
+    .brand-text strong {
+      display: block;
+      font-size: 1rem;
+    }
 
-        .nav-links ul { display: flex; align-items: center; gap: 30px; margin: 0; }
-        .nav-links a {
-            color: var(--text-light);
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: var(--transition);
-            position: relative;
-        }
+    .brand-text span {
+      color: var(--muted);
+      font-size: .82rem;
+      font-weight: 600;
+    }
 
-        .nav-links a:hover { color: var(--neon-blue); }
-        .nav-links a::after {
-            content: ''; display: block; width: 0; height: 2px;
-            background: var(--neon-blue); transition: width .3s;
-            position: absolute; bottom: -5px; left: 0;
-        }
-        .nav-links a:hover::after { width: 100%; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
 
-        .btn-glow {
-            background: transparent;
-            color: var(--neon-blue);
-            padding: 10px 25px;
-            border-radius: 50px;
-            font-weight: 600;
-            border: 2px solid var(--neon-blue);
-            position: relative;
-            overflow: hidden;
-            transition: var(--transition);
-            cursor: pointer;
-            box-shadow: 0 0 10px rgba(0, 242, 255, 0.2);
-        }
+    .nav-links a {
+      border: 1px solid rgba(255,255,255,.07);
+      background: rgba(255,255,255,.03);
+      color: var(--text);
+      padding: .8rem 1.05rem;
+      border-radius: 999px;
+      transition: .25s ease;
+      cursor: pointer;
+    }
 
-        .btn-glow:hover {
-            background: var(--neon-blue);
-            color: var(--bg-dark);
-            box-shadow: 0 0 20px rgba(0, 242, 255, 0.6);
-            transform: translateY(-3px);
-        }
+    .nav-links a:hover {
+      transform: translateY(-2px);
+      border-color: var(--line-strong);
+      background: rgba(102,216,255,.08);
+    }
 
-        .burger { display: none; cursor: pointer; }
-        .burger div { width: 25px; height: 3px; background-color: var(--neon-blue); margin: 5px; transition: var(--transition); }
+    .hero {
+      padding: 72px 0 36px;
+    }
 
-        /* --- HERO --- */
-        .hero {
-            padding-top: 150px;
-            display: flex;
-            align-items: center;
-            min-height: 95vh;
-        }
+    .hero-shell {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 36px;
+      align-items: center;
+    }
 
-        .hero-left { flex: 1; padding-right: 30px; }
-        .hero-name { font-size: 4rem; font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
-        .hero-desc { font-size: 1.15rem; color: var(--text-muted); margin-bottom: 35px; max-width: 650px; }
-        .hero-desc strong { color: var(--neon-blue); }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      padding: .5rem .85rem;
+      border-radius: 999px;
+      background: rgba(102,216,255,.08);
+      border: 1px solid rgba(102,216,255,.18);
+      color: var(--brand);
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
 
-        .hero-img-container { flex: 1; display: flex; justify-content: center; position: relative; }
-        .hero-img-container::before {
-            content: ''; position: absolute; width: 250px; height: 250px;
-            background: var(--deep-blue-gradient); filter: blur(90px); opacity: 0.2;
-            z-index: -1; border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%);
-        }
+    .hero h1 {
+      font-size: clamp(2.8rem, 7vw, 5.8rem);
+      line-height: .95;
+      letter-spacing: -0.05em;
+      margin-bottom: 18px;
+    }
 
-        .hero-img {
-            max-width: 280px; width: 100%; border-radius: 20px;
-            border: 2px solid rgba(0, 242, 255, 0.3);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-            transform: perspective(1000px) rotateY(-15deg) rotateX(5deg) scale(0.9);
-            filter: grayscale(60%);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-        }
-        
-        .hero-img:hover {
-            transform: perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1.15); 
-            filter: grayscale(0%); border-color: var(--neon-blue);
-            box-shadow: 0 0 25px rgba(0, 242, 255, 0.6), 0 0 50px rgba(0, 123, 255, 0.4);
-            z-index: 10; cursor: pointer;
-        }
+    .gradient {
+      background: var(--glow);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
-        .footer-icons a {
-            display: inline-flex; align-items: center; justify-content: center;
-            width: 45px; height: 45px; border: 2px solid var(--text-muted);
-            border-radius: 50%; margin-right: 15px; transition: var(--transition);
-        }
-        .footer-icons a svg { fill: var(--text-muted); transition: var(--transition); width: 22px; }
-        .footer-icons a:hover { border-color: var(--neon-blue); background: rgba(0, 242, 255, 0.1); transform: translateY(-3px); }
-        .footer-icons a:hover svg { fill: var(--neon-blue); }
+    .hero p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 760px;
+    }
 
-        /* --- CARDS & PORTFOLIO --- */
-        .glass-card {
-            background: var(--glass-bg); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-            border: var(--glass-border); box-shadow: var(--glass-shadow);
-            border-radius: 15px; padding: 25px; transition: var(--transition); height: 100%;
-        }
-        .glass-card:hover {
-            transform: translateY(-10px); border-color: var(--neon-blue);
-            box-shadow: 0 15px 30px -10px rgba(0, 242, 255, 0.2);
-        }
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
 
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-        .education { display: flex; gap: 20px; align-items: flex-start; }
-        .education img {
-            width: 70px; height: 70px; object-fit: contain;
-            background: rgba(255,255,255,0.05); padding: 10px; border-radius: 10px;
-        }
-        .education-title { color: var(--text-light); font-weight: 600; font-size: 1.1rem; margin-bottom: 5px; }
-        .education p small { color: var(--neon-blue); display: block; margin-bottom: 8px; }
-        .education p { color: var(--text-muted); font-size: 0.9rem; margin: 0; }
+    .badge {
+      padding: .75rem 1rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      font-size: .95rem;
+      color: #d6ebff;
+    }
 
-        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
-        .portofolio { padding: 0; overflow: hidden; display: flex; flex-direction: column; }
-        
-        .portofolio-cover {
-            height: 200px; overflow: hidden; position: relative;
-            border-bottom: 1px solid rgba(0, 242, 255, 0.1);
-        }
-        .portofolio-cover::after {
-            content: ''; position: absolute; inset: 0;
-            background: var(--deep-blue-gradient); opacity: 0; transition: var(--transition);
-        }
-        .portofolio:hover .portofolio-cover::after { opacity: 0.3; }
-        .portofolio-cover img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
-        .portofolio:hover .portofolio-cover img { transform: scale(1.1); }
+    .hero-card {
+      position: relative;
+      border-radius: 30px;
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow: var(--shadow);
+      min-height: 560px;
+    }
 
-        .portofolio-info { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
-        .portofolio-title { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; }
-        .portofolio-title h4 { color: var(--text-light); font-size: 1rem; font-weight: 700; margin: 0; line-height: 1.4; }
-        .portofolio-link svg { fill: var(--text-muted); transition: var(--transition); }
-        .portofolio-link:hover svg { fill: var(--neon-blue); transform: scale(1.2); }
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: auto 8% -12% 8%;
+      height: 40%;
+      background: radial-gradient(circle, rgba(102,216,255,.35), transparent 62%);
+      filter: blur(34px);
+    }
 
-        .portofolio-tags div {
-            font-size: 0.75rem; padding: 5px 12px;
-            background: rgba(0, 242, 255, 0.1); color: var(--neon-blue); border: 1px solid rgba(0, 242, 255, 0.3);
-            border-radius: 20px; display: inline-block; margin-right: 5px; margin-bottom: 8px; font-weight: 500;
-        }
-        .portofolio-info p { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 5px; }
+    .hero-card img {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
-        /* Scrollable Gallery Styles */
-        .scroll-container { display: flex; overflow-x: auto; scroll-behavior: smooth; scrollbar-width: none; }
-        .scroll-container::-webkit-scrollbar { display: none; }
-        .scroll-wrapper { display: flex; }
-        .scroll-wrapper img { min-width: 100%; height: 200px; object-fit: cover; border-right: 2px solid var(--bg-dark);}
+    section {
+      padding: 64px 0;
+    }
 
-        /* --- CONTACT --- */
-        .contact-container { display: flex; gap: 50px; }
-        .contact-left { flex: 1.5; }
-        .contact-right { flex: 1; display: flex; flex-direction: column; gap: 25px;}
+    .section-head {
+      margin-bottom: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      align-items: end;
+      justify-content: space-between;
+    }
 
-        .contact-form input, .contact-form textarea {
-            width: 100%; padding: 15px; margin-bottom: 20px;
-            background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(0, 242, 255, 0.2);
-            border-radius: 10px; color: var(--text-light); font-family: inherit; transition: var(--transition);
-        }
-        .contact-form input:focus, .contact-form textarea:focus {
-            outline: none; border-color: var(--neon-blue); background: rgba(0, 242, 255, 0.05);
-            box-shadow: 0 0 10px rgba(0, 242, 255, 0.1);
-        }
+    .section-head h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1;
+      letter-spacing: -0.04em;
+      margin-top: 8px;
+    }
 
-        .btn-submit {
-            background: var(--deep-blue-gradient); color: var(--bg-dark);
-            border: none; padding: 15px 35px; border-radius: 50px;
-            font-weight: 700; font-size: 1rem; cursor: pointer;
-            transition: var(--transition); box-shadow: 0 5px 15px rgba(0, 242, 255, 0.3);
-        }
-        .btn-submit:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0, 242, 255, 0.5); }
+    .section-head p {
+      max-width: 640px;
+      color: var(--muted);
+    }
 
-        .contact-item-icon {
-            width: 50px; height: 50px; background: rgba(0, 242, 255, 0.1);
-            border: 1px solid rgba(0, 242, 255, 0.3); border-radius: 50%;
-            display: flex; align-items: center; justify-content: center; margin-right: 15px; flex-shrink: 0;
-        }
-        .contact-item-icon svg { fill: var(--neon-blue); width: 22px; }
-        .contact-item-detail h4 { color: var(--text-light); margin-bottom: 5px; }
-        .contact-item-detail p { color: var(--text-muted); margin: 0; }
+    .panel {
+      background: var(--bg-soft);
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+    }
 
-        footer {
-            background: var(--bg-secondary); text-align: center; padding: 30px; margin-top: 80px;
-            border-top: 1px solid rgba(0, 242, 255, 0.05); color: var(--text-muted);
-        }
-        footer span { color: var(--neon-blue); }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+    }
 
-        @media (max-width: 1024px) {
-            .grid-3 { grid-template-columns: repeat(2, 1fr); }
-            .hero-name { font-size: 3rem; }
-        }
+    .skill-card {
+      padding: 22px;
+      border-radius: var(--radius-lg);
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,.06);
+      display: flex;
+      gap: 16px;
+      transition: .25s ease;
+    }
 
-        @media (max-width: 768px) {
-            .nav-links ul {
-                position: absolute; right: 0; top: 70px;
-                background: rgba(2, 12, 27, 0.95); backdrop-filter: blur(15px);
-                flex-direction: column; width: 100%; padding: 30px 0;
-                transform: translateY(-150%); transition: var(--transition);
-                border-bottom: 1px solid var(--neon-blue);
-            }
-            .nav-links ul.nav-active { transform: translateY(0%); }
-            .burger { display: block; }
-            .hero { flex-direction: column-reverse; text-align: center; padding-top: 120px; }
-            .hero-left { padding-right: 0; margin-top: 40px; }
-            .hero-right { justify-content: center; width: 100%; }
-            .hero-name { font-size: 2.8rem; }
-            .footer-icons { justify-content: center; display: flex; }
-            .grid-3 { grid-template-columns: 1fr; }
-            .contact-container { flex-direction: column; }
-        }
-    </style>
+    .skill-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--line-strong);
+    }
+
+    .skill-card img {
+      width: 68px;
+      height: 68px;
+      object-fit: contain;
+      border-radius: 16px;
+      background: rgba(255,255,255,.04);
+      padding: 10px;
+      flex-shrink: 0;
+    }
+
+    .skill-card h3 {
+      font-size: 1rem;
+      margin-bottom: 5px;
+    }
+
+    .skill-card small {
+      display: block;
+      color: var(--brand);
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .skill-card p {
+      color: var(--muted);
+      font-size: .93rem;
+    }
+
+    .portfolio-shell {
+      padding: 24px;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .chip {
+      padding: .8rem 1rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.03);
+      color: var(--text);
+      cursor: pointer;
+      transition: .25s ease;
+    }
+
+    .chip.active, .chip:hover {
+      background: rgba(102,216,255,.11);
+      border-color: var(--line-strong);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .project-card {
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 26px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: .28s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--line-strong);
+    }
+
+    .project-card.wide {
+      grid-column: span 2;
+    }
+
+    .project-media {
+      position: relative;
+      padding: 16px 16px 0;
+    }
+
+    .shot-rail {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(88%, 1fr);
+      gap: 12px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 10px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(122,124,255,.6) transparent;
+    }
+
+    .shot-rail::-webkit-scrollbar {
+      height: 10px;
+    }
+
+    .shot-rail::-webkit-scrollbar-thumb {
+      background: rgba(122,124,255,.55);
+      border-radius: 999px;
+    }
+
+    .shot {
+      scroll-snap-align: start;
+      border: 0;
+      background: transparent;
+      padding: 0;
+      cursor: zoom-in;
+    }
+
+    .shot img {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: #07101f;
+      transition: .25s ease;
+    }
+
+    .shot:hover img {
+      transform: scale(1.01);
+      border-color: var(--line-strong);
+      box-shadow: 0 12px 34px rgba(0,0,0,.22);
+    }
+
+    .project-body {
+      padding: 18px 20px 22px;
+    }
+
+    .project-topline {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
+    .project-type, .stack-count {
+      font-size: .8rem;
+      color: var(--brand);
+      font-weight: 700;
+      letter-spacing: .02em;
+    }
+
+    .project-body h3 {
+      font-size: clamp(1.2rem, 2vw, 1.65rem);
+      line-height: 1.15;
+      margin-bottom: 14px;
+    }
+
+    .project-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: .5rem .78rem;
+      border-radius: 999px;
+      background: rgba(102,216,255,.10);
+      border: 1px solid rgba(102,216,255,.15);
+      color: #d9f8ff;
+      font-size: .82rem;
+      font-weight: 700;
+    }
+
+    .project-summary {
+      color: var(--muted);
+      font-size: .98rem;
+      margin-bottom: 12px;
+    }
+
+    .project-details {
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding-top: 14px;
+    }
+
+    .project-details summary {
+      list-style: none;
+      cursor: pointer;
+      user-select: none;
+      display: inline-flex;
+      align-items: center;
+      gap: .7rem;
+      padding: .8rem 1rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      font-weight: 700;
+      transition: .25s ease;
+    }
+
+    .project-details summary:hover {
+      background: rgba(102,216,255,.08);
+      border-color: var(--line-strong);
+    }
+
+    .project-details summary::-webkit-details-marker { display: none; }
+    .less-text { display: none; }
+    .project-details[open] .more-text { display: none; }
+    .project-details[open] .less-text { display: inline; }
+
+    .details-content {
+      padding-top: 14px;
+      color: var(--muted);
+    }
+
+    .details-content strong {
+      color: var(--text);
+    }
+
+    .details-content ul {
+      margin: 10px 0 0 1.15rem;
+    }
+
+    .details-content li + li {
+      margin-top: 8px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 22px;
+    }
+
+    .contact-card {
+      padding: 24px;
+    }
+
+    .contact-card p {
+      color: var(--muted);
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .contact-item {
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.06);
+    }
+
+    .contact-item strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      padding: 1rem 1.05rem;
+      border-radius: 16px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      color: var(--text);
+      outline: none;
+    }
+
+    .contact-form input:focus, .contact-form textarea:focus {
+      border-color: var(--line-strong);
+      box-shadow: 0 0 0 4px rgba(102,216,255,.08);
+    }
+
+    .btn-primary {
+      width: fit-content;
+      padding: .95rem 1.2rem;
+      border: 0;
+      border-radius: 999px;
+      background: var(--glow);
+      color: #091122;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 12px 34px rgba(102,216,255,.20);
+    }
+
+    footer {
+      padding: 32px 0 56px;
+      color: var(--muted);
+    }
+
+    .footer-bar {
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(2,6,18,.84);
+      backdrop-filter: blur(12px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1200;
+      padding: 24px;
+    }
+
+    .lightbox.active { display: flex; }
+
+    .lightbox-inner {
+      width: min(96vw, 1240px);
+      max-height: 92vh;
+      background: rgba(8, 15, 35, .95);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .lightbox-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 14px 18px;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+
+    .lightbox-top strong {
+      font-size: .95rem;
+    }
+
+    .lightbox-close {
+      border: 0;
+      background: rgba(255,255,255,.08);
+      color: var(--text);
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .lightbox-body {
+      background: #040816;
+      max-height: calc(92vh - 72px);
+      overflow: auto;
+    }
+
+    .lightbox-body img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+
+    @media (max-width: 1100px) {
+      .hero-shell,
+      .contact-grid,
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+      .project-card.wide { grid-column: span 1; }
+    }
+
+    @media (max-width: 768px) {
+      .nav {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 14px 0;
+      }
+      .nav-links {
+        justify-content: center;
+      }
+      .hero-card {
+        min-height: 420px;
+      }
+      .shot img {
+        height: 260px;
+      }
+      .portfolio-shell {
+        padding: 16px;
+      }
+      .section-head {
+        margin-bottom: 20px;
+      }
+    }
+  </style>
 </head>
 <body>
-
-<header>
-  <div class="main-container">
-    <div class="nav">
-      <div class="logo">
-        <h4>Muhammad<span>Faisal</span>S.Tr.T</h4>
-      </div>
+  <header>
+    <div class="container nav">
+      <a href="#hero" class="brand">
+        <div class="brand-badge">MF</div>
+        <div class="brand-text">
+          <strong>Muhammad Faisal</strong>
+          <span>Web Development & Data Portfolio</span>
+        </div>
+      </a>
 
       <nav class="nav-links">
-        <ul>
-          <li><a href="#hero">Home</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#portofolios">Portfolio</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li>
-            <a href="./CV_Muhammad_Faisal.pdf" download="CV_Muhammad_Faisal.pdf">
-              <button type="button" class="btn-glow">Download CV</button>
-            </a>
-          </li>
-        </ul>
+        <a href="#hero">Home</a>
+        <a href="#skills">Skills</a>
+        <a href="#portofolios">Portfolio</a>
+        <a href="#contact">Contact</a>
+        <a href="./CV_Muhammad_Faisal.pdf" download="CV_Muhammad_Faisal.pdf">Download CV</a>
       </nav>
+    </div>
+  </header>
 
-      <div class="burger" id="burger">
-        <div></div><div></div><div></div>
+  <main>
+    <section id="hero" class="hero">
+      <div class="container hero-shell">
+        <div class="hero-copy">
+          <span class="eyebrow">Hello, I am Muhammad Faisal</span>
+          <h1>Muhammad <span class="gradient">Faisal</span></h1>
+          <p>
+            Saya adalah lulusan Teknik Komputer dan Jaringan dari Politeknik Negeri Ujung Pandang dengan minat pada
+            <strong>web development</strong>, <strong>pengolahan data</strong>, dan <strong>otomasi sistem</strong>.
+            Saat ini saya juga mengerjakan beberapa aktivitas secara part-time sebagai <strong>freelancer IT Support</strong>
+            dan <strong>freelancer pembuatan website UMKM</strong>, sehingga saya terbiasa menangani kebutuhan teknis,
+            visualisasi data, dan pengembangan website yang menyesuaikan kebutuhan pengguna.
+          </p>
+
+          <div class="hero-badges">
+            <span class="badge">Freelancer IT Support</span>
+            <span class="badge">Website UMKM</span>
+            <span class="badge">Dashboard & Automation</span>
+            <span class="badge">Data Visualization</span>
+          </div>
+        </div>
+
+        <div class="hero-card reveal-right">
+          <img src="./images/fotoid.png" alt="Foto Muhammad Faisal">
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Learning Path</span>
+            <h2>Training & <span class="gradient">Certification</span></h2>
+          </div>
+          <p>
+            Bagian ini berisi ringkasan perjalanan belajar yang mendukung minat saya pada pengembangan web,
+            analisis data, dan visualisasi informasi.
+          </p>
+        </div>
+
+        <div class="skills-grid">
+          <article class="skill-card reveal-bottom">
+            <img src="./images/web.png" alt="Web Programming">
+            <div>
+              <h3>Web Programming Development</h3>
+              <small>VSGA Digital Talent Scholarship 2025</small>
+              <p>Pengembangan web modern full-stack dengan pendekatan UI, integrasi sistem, dan logika aplikasi yang lebih matang.</p>
+            </div>
+          </article>
+
+          <article class="skill-card reveal-bottom">
+            <img src="./images/associate.png" alt="Data Scientist">
+            <div>
+              <h3>Associate Data Scientist</h3>
+              <small>VSGA Digital Talent Scholarship 2024</small>
+              <p>Machine Learning, preprocessing data, dan visualisasi sebagai dasar pengolahan data yang lebih terarah.</p>
+            </div>
+          </article>
+
+          <article class="skill-card reveal-bottom">
+            <img src="./images/pemasarandigital.png" alt="Pemasaran Digital">
+            <div>
+              <h3>Pemasaran Digital Dasar</h3>
+              <small>DEA Digital Talent Scholarship 2024</small>
+              <p>Pemahaman SEO, SEM, dan social media marketing untuk mendukung sisi promosi digital.</p>
+            </div>
+          </article>
+
+          <article class="skill-card reveal-bottom">
+            <img src="./images/dataanalis.png" alt="Data Analytics">
+            <div>
+              <h3>Data Analytics Professional</h3>
+              <small>FGA Digital Talent Scholarship 2024</small>
+              <p>Analisis statistik dan pengolahan insight untuk membantu pengambilan keputusan berbasis data.</p>
+            </div>
+          </article>
+
+          <article class="skill-card reveal-bottom">
+            <img src="./images/python.png" alt="Python">
+            <div>
+              <h3>Python Fundamental</h3>
+              <small>Aguna Course • Mei 2024</small>
+              <p>Penguasaan struktur data dan dasar pemrograman Python untuk otomasi dan analisis data.</p>
+            </div>
+          </article>
+
+          <article class="skill-card reveal-bottom">
+            <img src="./images/revo.png" alt="RevoU">
+            <div>
+              <h3>Data Analytics Mini Course</h3>
+              <small>RevoU • Mei 2024</small>
+              <p>Fundamental visualisasi data bisnis dan penyajian insight dengan pendekatan storytelling.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="portofolios">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Selected Works</span>
+            <h2>Featured <span class="gradient">Portfolio</span></h2>
+          </div>
+          <p>
+            Semua project ditampilkan dengan visual yang lebih besar agar lebih nyaman dibaca. Setiap project juga
+            memiliki penjelasan ringkas dan detail tambahan yang bisa dibuka sesuai kebutuhan.
+          </p>
+        </div>
+
+        <div class="panel portfolio-shell reveal-bottom">
+          <div class="toolbar" id="toolbar">
+            <button class="chip active" data-filter="all">Semua</button>
+            <button class="chip" data-filter="dashboard">Dashboard & Visualisasi</button>
+            <button class="chip" data-filter="automation">Automation System</button>
+            <button class="chip" data-filter="web">Web & App Project</button>
+          </div>
+
+          <div class="portfolio-grid" id="portfolioGrid">
+            
+    <article class="project-card" data-category="web">
+        <div class="project-media">
+            <div class="shot-rail">
+        <button class="shot" type="button" data-image="./images/iot.png" data-title="IOT | OTA Update System - Slide 1">
+            <img src="./images/iot.png" alt="IOT | OTA Update System - Screenshot 1">
+        </button></div>
+        </div>
+        <div class="project-body">
+            <div class="project-topline">
+                <span class="project-type">Firmware deployment untuk perangkat IoT</span>
+                <span class="stack-count">1 visual</span>
+            </div>
+            <h3>IOT | OTA Update System</h3>
+            <div class="project-stack"><span class="tag">Python</span><span class="tag">MQTT</span><span class="tag">ESP8266</span></div>
+            <p class="project-summary">Sistem update firmware over-the-air (OTA) untuk perangkat IoT agar proses pembaruan lebih cepat, aman, dan efisien.</p>
+            <details class="project-details">
+                <summary>
+                    <span class="more-text">More details</span>
+                    <span class="less-text">Show less</span>
+                </summary>
+                <div class="details-content">
+                    <p><strong>Dibangun dengan:</strong> Python, MQTT, ESP8266</p>
+                    <ul><li>Mempermudah proses pembaruan firmware tanpa perlu flash manual di setiap perangkat.</li><li>Cocok untuk skenario monitoring atau deployment perangkat IoT yang tersebar di banyak lokasi.</li><li>Fokus utama sistem ini adalah otomasi update, efisiensi maintenance, dan stabilitas perangkat.</li></ul>
+                </div>
+            </details>
+        </div>
+    </article>
+    
+
+    <article class="project-card" data-category="web">
+        <div class="project-media">
+            <div class="shot-rail">
+        <button class="shot" type="button" data-image="./images/mobile.png" data-title="Mobile App | UMKM System - Slide 1">
+            <img src="./images/mobile.png" alt="Mobile App | UMKM System - Screenshot 1">
+        </button></div>
+        </div>
+        <div class="project-body">
+            <div class="project-topline">
+                <span class="project-type">Aplikasi inventaris dan produk UMKM</span>
+                <span class="stack-count">1 visual</span>
+            </div>
+            <h3>Mobile App | UMKM System</h3>
+            <div class="project-stack"><span class="tag">Java</span><span class="tag">XML</span><span class="tag">SQLite</span></div>
+            <p class="project-summary">Aplikasi Android untuk manajemen produk dan inventaris UMKM agar pencatatan stok dan data usaha menjadi lebih tertata.</p>
+            <details class="project-details">
+                <summary>
+                    <span class="more-text">More details</span>
+                    <span class="less-text">Show less</span>
+                </summary>
+                <div class="details-content">
+                    <p><strong>Dibangun dengan:</strong> Java, XML, SQLite</p>
+                    <ul><li>Dirancang untuk kebutuhan operasional UMKM dengan antarmuka yang sederhana dan mudah digunakan.</li><li>Membantu proses pencatatan data produk, stok, dan aktivitas usaha harian.</li><li>Mengutamakan kemudahan penggunaan di perangkat mobile.</li></ul>
+                </div>
+            </details>
+        </div>
+    </article>
+    
+
+    <article class="project-card" data-category="web">
+        <div class="project-media">
+            <div class="shot-rail">
+        <button class="shot" type="button" data-image="./images/web.png.jpg" data-title="Web App | SIMPRODI TKJ - Slide 1">
+            <img src="./images/web.png.jpg" alt="Web App | SIMPRODI TKJ - Screenshot 1">
+        </button></div>
+        </div>
+        <div class="project-body">
+            <div class="project-topline">
+                <span class="project-type">Sistem informasi manajemen program studi</span>
+                <span class="stack-count">1 visual</span>
+            </div>
+            <h3>Web App | SIMPRODI TKJ</h3>
+            <div class="project-stack"><span class="tag">React</span><span class="tag">Node.js</span><span class="tag">MySQL</span></div>
+            <p class="project-summary">Sistem Informasi Manajemen Program Studi full-stack untuk kebutuhan monitoring akademik dan pengelolaan data.</p>
+            <details class="project-details">
+                <summary>
+                    <span class="more-text">More details</span>
+                    <span class="less-text">Show less</span>
+                </summary>
+                <div class="details-content">
+                    <p><strong>Dibangun dengan:</strong> React, Node.js, MySQL</p>
+                    <ul><li>Dikembangkan untuk membantu pengelolaan informasi program studi secara lebih sistematis.</li><li>Menyatukan data akademik, monitoring, dan pengelolaan informasi dalam satu aplikasi berbasis web.</li><li>Menggunakan arsitektur full-stack agar alur data lebih terintegrasi.</li></ul>
+                </div>
+            </details>
+        </div>
+    </article>
+    
+
+    <article class="project-card" data-category="web">
+        <div class="project-media">
+            <div class="shot-rail">
+        <button class="shot" type="button" data-image="./images/api.png" data-title="Rest API | Kuliner Sulsel - Slide 1">
+            <img src="./images/api.png" alt="Rest API | Kuliner Sulsel - Screenshot 1">
+        </button></div>
+        </div>
+        <div class="project-body">
+            <div class="project-topline">
+                <span class="project-type">Integrasi data kuliner berbasis API</span>
+                <span class="stack-count">1 visual</span>
+            </div>
+            <h3>Rest API | Kuliner Sulsel</h3>
+            <div class="project-stack"><span class="tag">React</span><span class="tag">Node.js</span><span class="tag">Express</span></div>
+            <p class="project-summary">Pengembangan dan integrasi API data kuliner khas dengan frontend interaktif untuk penyajian informasi yang lebih dinamis.</p>
+            <details class="project-details">
+                <summary>
+                    <span class="more-text">More details</span>
+                    <span class="less-text">Show less</span>
+                </summary>
+                <div class="details-content">
+                    <p><strong>Dibangun dengan:</strong> React, Node.js, Express</p>
+                    <ul><li>Berfokus pada penyediaan data terstruktur yang mudah dikonsumsi oleh antarmuka web.</li><li>Mendukung proses pemisahan logic backend dan tampilan frontend.</li><li>Cocok untuk pengembangan sistem informasi kuliner atau eksplorasi REST API.</li></ul>
+                </div>
+            </details>
+        </div>
+    </article>
+    
+
+    <article class="project-card" data-category="web">
+        <div class="project-media">
+            <div class="shot-rail">
+        <button class="shot" type="button" data-image="./images/rpl.png" data-title="Web | BaBeYaGun Marketplace - Slide 1">
+            <img src="./images/rpl.png" alt="Web | BaBeYaGun Marketplace - Screenshot 1">
+        </button></div>
+        </div>
+        <div class="project-body">
+            <div class="project-topline">
+                <span class="project-type">Marketplace barang bekas layak guna</span>
+                <span class="stack-count">1 visual</span>
+            </div>
+            <h3>Web | BaBeYaGun Marketplace</h3>
+            <div class="project-stack"><span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">Bootstrap</span></div>
+            <p class="project-summary">Platform jual beli barang bekas layak guna dengan fitur CRUD lengkap untuk mendukung pengelolaan data produk.</p>
+            <details class="project-details">
+                <summary>
+                    <span class="more-text">More details</span>
+                    <span class="less-text">Show less</span>
+                </summary>
+                <div class="details-content">
+                    <p><strong>Dibangun dengan:</strong> PHP, MySQL, Bootstrap</p>
+                    <ul><li>Mendukung publikasi produk, pengelolaan data, dan interaksi dasar pada marketplace.</li><li>Dirancang sebagai aplikasi web dinamis untuk kebutuhan transaksi dan pengelolaan item.</li><li>Menonjolkan alur CRUD dan struktur sistem e-commerce dasar.</li></ul>
+                </div>
+            </details>
+        </div>
+    </article>
+    
+
+    <article class="project-card wide" data-category="web">
+        <div class="project-media">
+            <div class="shot-rail">
+        <button class="shot" type="button" data-image="./images/jaringan1.jpg" data-title="E-Commerce | Alat Jaringan - Slide 1">
+            <img src="./images/jaringan1.jpg" alt="E-Commerce | Alat Jaringan - Screenshot 1">
+        </button>
+        <button class="shot" type="button" data-image="./images/jaringan2.jpg" data-title="E-Commerce | Alat Jaringan - Slide 2">
+            <img src="./images/jaringan2.jpg" alt="E-Commerce | Alat Jaringan - Screenshot 2">
+        </button>
+        <button class="shot" type="button" data-image="./images/jaringan3.jpg" data-title="E-Commerce | Alat Jaringan - Slide 3">
+            <img src="./images/jaringan3.jpg" alt="E-Commerce | Alat Jaringan - Screenshot 3">
+        </button>
+        <button class="shot" type="button" data-image="./images/jaringan4.jpg" data-title="E-Commerce | Alat Jaringan - Slide 4">
+            <img src="./images/jaringan4.jpg" alt="E-Commerce | Alat Jaringan - Screenshot 4">
+        </button>
+        <button class="shot" type="button" data-image="./images/jaringan5.jpg" data-title="E-Commerce | Alat Jaringan - Slide 5">
+            <img src="./images/jaringan5.jpg" alt="E-Commerce | Alat Jaringan - Screenshot 5">
+        </button></div>
+        </div>
+        <div class="project-body">
+            <div class="project-topline">
+                <span class="project-type">Katalog dan penjualan perangkat jaringan</span>
+                <span class="stack-count">5 visual</span>
+            </div>
+            <h3>E-Commerce | Alat Jaringan</h3>
+            <div class="project-stack"><span class="tag">WordPress</span><span class="tag">WooCommerce</span></div>
+            <p class="project-summary">Website katalog dan penjualan perangkat jaringan komputer online dengan tampilan produk yang terstruktur.</p>
+            <details class="project-details">
+                <summary>
+                    <span class="more-text">More details</span>
+                    <span class="less-text">Show less</span>
+                </summary>
+                <div class="details-content">
+                    <p><strong>Dibangun dengan:</strong> WordPress, WooCommerce</p>
+                    <ul><li>Difokuskan untuk memudahkan penayangan produk, kategori, dan informasi spesifikasi.</li><li>Memanfaatkan WordPress untuk kecepatan pengelolaan konten dan WooCommerce untuk kebutuhan katalog penjualan.</li><li>Tampilan dibuat informatif agar pengguna mudah menelusuri produk.</li></ul>
+                </div>
+            </details>
+        </div>
+    </article>
+    
+
+    <article class="project-card wide" data-category="web">
+        <div class="project-media">
+            <div class="shot-rail">
+        <button class="shot" type="button" data-image="./images/portfolio1.jpg" data-title="Modern Web | Bento Grid Layout - Slide 1">
+            <img src="./images/portfolio1.jpg" alt="Modern Web | Bento Grid Layout - Screenshot 1">
+        </button>
+        <button class="shot" type="button" data-image="./images/portfolio2.jpg" data-title="Modern Web | Bento Grid Layout - Slide 2">
+            <img src="./images/portfolio2.jpg" alt="Modern Web | Bento Grid Layout - Screenshot 2">
+        </button>
+        <button class="shot" type="button" data-image="./images/portfolio3.jpg" data-title="Modern Web | Bento Grid Layout - Slide 3">
+            <img src="./images/portfolio3.jpg" alt="Modern Web | Bento Grid Layout - Screenshot 3">
+        </button>
+        <button class="shot" type="button" data-image="./images/portfolio6.jpg" data-title="Modern Web | Bento Grid Layout - Slide 4">
+            <img src="./images/portfolio4.jpg" alt="Modern Web | Bento Grid Layout - Screenshot 4">
+        </button></div>
+        </div>
+        <div class="project-body">
+            <div class="project-topline">
+                <span class="project-type">Eksplorasi tata letak portfolio modern</span>
+                <span class="stack-count">4 visual</span>
+            </div>
+            <h3>Modern Web | Bento Grid Layout</h3>
+            <div class="project-stack"><span class="tag">HTML</span><span class="tag">CSS Grid</span><span class="tag">UI Design</span></div>
+            <p class="project-summary">Eksplorasi desain portfolio modern dengan konsep Bento Grid untuk menghasilkan tampilan yang rapi, menarik, dan modular.</p>
+            <details class="project-details">
+                <summary>
+                    <span class="more-text">More details</span>
+                    <span class="less-text">Show less</span>
+                </summary>
+                <div class="details-content">
+                    <p><strong>Dibangun dengan:</strong> HTML, CSS Grid, UI Design</p>
+                    <ul><li>Berfokus pada layout modern yang banyak digunakan dalam website portfolio masa kini.</li><li>Mengutamakan komposisi visual, hierarki informasi, dan responsivitas desain.</li><li>Sangat cocok sebagai fondasi tampilan portfolio modern.</li></ul>
+                </div>
+            </details>
+        </div>
+    </article>
+    
+
+    <article class="project-card wide" data-category="web">
+        <div class="project-media">
+            <div class="shot-rail">
+        <button class="shot" type="button" data-image="./images/cleaning1.jpg" data-title="Landing Page | Cleaning Service - Slide 1">
+            <img src="./images/cleaning1.jpg" alt="Landing Page | Cleaning Service - Screenshot 1">
+        </button>
+        <button class="shot" type="button" data-image="./images/cleaning2.jpg" data-title="Landing Page | Cleaning Service - Slide 2">
+            <img src="./images/cleaning2.jpg" alt="Landing Page | Cleaning Service - Screenshot 2">
+        </button>
+        <button class="shot" type="button" data-image="./images/cleaning3.jpg" data-title="Landing Page | Cleaning Service - Slide 3">
+            <img src="./images/cleaning3.jpg" alt="Landing Page | Cleaning Service - Screenshot 3">
+        </button>
+        <button class="shot" type="button" data-image="./images/cleaning4.jpg" data-title="Landing Page | Cleaning Service - Slide 4">
+            <img src="./images/cleaning4.jpg" alt="Landing Page | Cleaning Service - Screenshot 4">
+        </button>
+        <button class="shot" type="button" data-image="./images/cleaning5.jpg" data-title="Landing Page | Cleaning Service - Slide 5">
+            <img src="./images/cleaning5.jpg" alt="Landing Page | Cleaning Service - Screenshot 5">
+        </button></div>
+        </div>
+        <div class="project-body">
+            <div class="project-topline">
+                <span class="project-type">Profil bisnis jasa kebersihan</span>
+                <span class="stack-count">5 visual</span>
+            </div>
+            <h3>Landing Page | Cleaning Service</h3>
+            <div class="project-stack"><span class="tag">WordPress</span><span class="tag">Elementor</span></div>
+            <p class="project-summary">Website profil bisnis untuk penawaran jasa kebersihan profesional dengan fokus pada tampilan informatif dan promosi layanan.</p>
+            <details class="project-details">
+                <summary>
+                    <span class="more-text">More details</span>
+                    <span class="less-text">Show less</span>
+                </summary>
+                <div class="details-content">
+                    <p><strong>Dibangun dengan:</strong> WordPress, Elementor</p>
+                    <ul><li>Menampilkan layanan utama, identitas bisnis, dan nilai jual secara visual.</li><li>Dirancang agar cocok untuk kebutuhan promosi bisnis lokal atau jasa profesional.</li><li>Memanfaatkan kemudahan pengelolaan halaman dari WordPress dan Elementor.</li></ul>
+                </div>
+            </details>
+        </div>
+    </article>
+    
+
+    <article class="project-card wide" data-category="web">
+        <div class="project-media">
+            <div class="shot-rail">
+        <button class="shot" type="button" data-image="./images/motor1.jpg" data-title="Web | Rental Motor - Slide 1">
+            <img src="./images/motor1.jpg" alt="Web | Rental Motor - Screenshot 1">
+        </button>
+        <button class="shot" type="button" data-image="./images/motor2.jpg" data-title="Web | Rental Motor - Slide 2">
+            <img src="./images/motor2.jpg" alt="Web | Rental Motor - Screenshot 2">
+        </button>
+        <button class="shot" type="button" data-image="./images/motor3.jpg" data-title="Web | Rental Motor - Slide 3">
+            <img src="./images/motor3.jpg" alt="Web | Rental Motor - Screenshot 3">
+        </button>
+        <button class="shot" type="button" data-image="./images/motor4.jpg" data-title="Web | Rental Motor - Slide 4">
+            <img src="./images/motor4.jpg" alt="Web | Rental Motor - Screenshot 4">
+        </button>
+        <button class="shot" type="button" data-image="./images/motor5.jpg" data-title="Web | Rental Motor - Slide 5">
+            <img src="./images/motor5.jpg" alt="Web | Rental Motor - Screenshot 5">
+        </button></div>
+        </div>
+        <div class="project-body">
+            <div class="project-topline">
+                <span class="project-type">Katalog unit dan informasi sewa</span>
+                <span class="stack-count">5 visual</span>
+            </div>
+            <h3>Web | Rental Motor</h3>
+            <div class="project-stack"><span class="tag">WordPress</span></div>
+            <p class="project-summary">Sistem informasi penyewaan motor dengan katalog unit yang menampilkan kendaraan secara lebih rapi dan mudah dipahami.</p>
+            <details class="project-details">
+                <summary>
+                    <span class="more-text">More details</span>
+                    <span class="less-text">Show less</span>
+                </summary>
+                <div class="details-content">
+                    <p><strong>Dibangun dengan:</strong> WordPress</p>
+                    <ul><li>Difokuskan untuk menampilkan daftar unit, informasi layanan, dan gambaran penyewaan.</li><li>Cocok sebagai media informasi bisnis rental kendaraan berbasis web.</li><li>Menonjolkan presentasi visual armada dan kemudahan navigasi konten.</li></ul>
+                </div>
+            </details>
+        </div>
+    </article>
+    
+
+    <article class="project-card wide" data-category="web">
+        <div class="project-media">
+            <div class="shot-rail">
+        <button class="shot" type="button" data-image="./images/kue1.jpg" data-title="Web | Toko Kue Tradisional - Slide 1">
+            <img src="./images/kue1.jpg" alt="Web | Toko Kue Tradisional - Screenshot 1">
+        </button>
+        <button class="shot" type="button" data-image="./images/kue2.jpg" data-title="Web | Toko Kue Tradisional - Slide 2">
+            <img src="./images/kue2.jpg" alt="Web | Toko Kue Tradisional - Screenshot 2">
+        </button>
+        <button class="shot" type="button" data-image="./images/kue3.jpg" data-title="Web | Toko Kue Tradisional - Slide 3">
+            <img src="./images/kue3.jpg" alt="Web | Toko Kue Tradisional - Screenshot 3">
+        </button>
+        <button class="shot" type="button" data-image="./images/kue4.jpg" data-title="Web | Toko Kue Tradisional - Slide 4">
+            <img src="./images/kue4.jpg" alt="Web | Toko Kue Tradisional - Screenshot 4">
+        </button>
+        <button class="shot" type="button" data-image="./images/kue5.jpg" data-title="Web | Toko Kue Tradisional - Slide 5">
+            <img src="./images/kue5.jpg" alt="Web | Toko Kue Tradisional - Screenshot 5">
+        </button></div>
+        </div>
+        <div class="project-body">
+            <div class="project-topline">
+                <span class="project-type">Etalase digital produk UMKM kuliner</span>
+                <span class="stack-count">5 visual</span>
+            </div>
+            <h3>Web | Toko Kue Tradisional</h3>
+            <div class="project-stack"><span class="tag">WordPress</span></div>
+            <p class="project-summary">Website e-commerce untuk penjualan aneka kue tradisional dengan tampilan produk yang lebih menarik dan terstruktur.</p>
+            <details class="project-details">
+                <summary>
+                    <span class="more-text">More details</span>
+                    <span class="less-text">Show less</span>
+                </summary>
+                <div class="details-content">
+                    <p><strong>Dibangun dengan:</strong> WordPress</p>
+                    <ul><li>Menekankan visual produk agar lebih memudahkan promosi kuliner.</li><li>Mendukung kebutuhan branding, katalog, dan penyampaian informasi usaha.</li><li>Cocok untuk digitalisasi penjualan produk makanan lokal.</li></ul>
+                </div>
+            </details>
+        </div>
+    </article>
+    
+
+    <article class="project-card wide" data-category="web">
+        <div class="project-media">
+            <div class="shot-rail">
+        <button class="shot" type="button" data-image="./images/tenda1.jpg" data-title="Web | Rental Tenda - Slide 1">
+            <img src="./images/tenda1.jpg" alt="Web | Rental Tenda - Screenshot 1">
+        </button>
+        <button class="shot" type="button" data-image="./images/tenda2.jpg" data-title="Web | Rental Tenda - Slide 2">
+            <img src="./images/tenda2.jpg" alt="Web | Rental Tenda - Screenshot 2">
+        </button>
+        <button class="shot" type="button" data-image="./images/tenda3.jpg" data-title="Web | Rental Tenda - Slide 3">
+            <img src="./images/tenda3.jpg" alt="Web | Rental Tenda - Screenshot 3">
+        </button>
+        <button class="shot" type="button" data-image="./images/tenda4.jpg" data-title="Web | Rental Tenda - Slide 4">
+            <img src="./images/tenda4.jpg" alt="Web | Rental Tenda - Screenshot 4">
+        </button>
+        <button class="shot" type="button" data-image="./images/tenda5.jpg" data-title="Web | Rental Tenda - Slide 5">
+            <img src="./images/tenda5.jpg" alt="Web | Rental Tenda - Screenshot 5">
+        </button></div>
+        </div>
+        <div class="project-body">
+            <div class="project-topline">
+                <span class="project-type">Informasi layanan sewa perlengkapan acara</span>
+                <span class="stack-count">5 visual</span>
+            </div>
+            <h3>Web | Rental Tenda</h3>
+            <div class="project-stack"><span class="tag">WordPress</span></div>
+            <p class="project-summary">Sistem informasi jasa penyewaan tenda untuk berbagai acara dengan tampilan layanan yang mudah dipahami calon pelanggan.</p>
+            <details class="project-details">
+                <summary>
+                    <span class="more-text">More details</span>
+                    <span class="less-text">Show less</span>
+                </summary>
+                <div class="details-content">
+                    <p><strong>Dibangun dengan:</strong> WordPress</p>
+                    <ul><li>Menyajikan daftar layanan dan visual perlengkapan secara lebih jelas.</li><li>Didesain untuk membantu promosi layanan event dan penyewaan alat pendukung acara.</li><li>Berfokus pada kemudahan akses informasi bagi pengguna.</li></ul>
+                </div>
+            </details>
+        </div>
+    </article>
+    
+
+    <article class="project-card wide" data-category="dashboard">
+        <div class="project-media">
+            <div class="shot-rail">
+        <button class="shot" type="button" data-image="./images/magang1.png" data-title="Data Viz | Dashboard DTS - Slide 1">
+            <img src="./images/magang1.png" alt="Data Viz | Dashboard DTS - Screenshot 1">
+        </button>
+        <button class="shot" type="button" data-image="./images/magang2.png" data-title="Data Viz | Dashboard DTS - Slide 2">
+            <img src="./images/magang2.png" alt="Data Viz | Dashboard DTS - Screenshot 2">
+        </button>
+        <button class="shot" type="button" data-image="./images/magang3.png" data-title="Data Viz | Dashboard DTS - Slide 3">
+            <img src="./images/magang3.png" alt="Data Viz | Dashboard DTS - Screenshot 3">
+        </button>
+        <button class="shot" type="button" data-image="./images/magang4.png" data-title="Data Viz | Dashboard DTS - Slide 4">
+            <img src="./images/magang4.png" alt="Data Viz | Dashboard DTS - Screenshot 4">
+        </button></div>
+        </div>
+        <div class="project-body">
+            <div class="project-topline">
+                <span class="project-type">Monitoring peserta DTS wilayah Indonesia Timur</span>
+                <span class="stack-count">4 visual</span>
+            </div>
+            <h3>Data Viz | Dashboard DTS</h3>
+            <div class="project-stack"><span class="tag">Looker Studio</span><span class="tag">Google Sheets</span></div>
+            <p class="project-summary">Dashboard interaktif monitoring data peserta DTS wilayah Indonesia Timur untuk membantu pembacaan data yang lebih cepat.</p>
+            <details class="project-details">
+                <summary>
+                    <span class="more-text">More details</span>
+                    <span class="less-text">Show less</span>
+                </summary>
+                <div class="details-content">
+                    <p><strong>Dibangun dengan:</strong> Looker Studio, Google Sheets</p>
+                    <ul><li>Memudahkan pemantauan data peserta melalui visual yang ringkas dan informatif.</li><li>Membantu proses analisis berbasis dashboard untuk kebutuhan monitoring program.</li><li>Menampilkan pendekatan visualisasi data yang fokus pada insight.</li></ul>
+                </div>
+            </details>
+        </div>
+    </article>
+    
+
+    <article class="project-card wide" data-category="web">
+        <div class="project-media">
+            <div class="shot-rail">
+        <button class="shot" type="button" data-image="./images/websekolah1.png" data-title="Web | Sistem Informasi Sekolah - Slide 1">
+            <img src="./images/websekolah1.png" alt="Web | Sistem Informasi Sekolah - Screenshot 1">
+        </button>
+        <button class="shot" type="button" data-image="./images/websekolah2.png" data-title="Web | Sistem Informasi Sekolah - Slide 2">
+            <img src="./images/websekolah2.png" alt="Web | Sistem Informasi Sekolah - Screenshot 2">
+        </button>
+        <button class="shot" type="button" data-image="./images/websekolah3.png" data-title="Web | Sistem Informasi Sekolah - Slide 3">
+            <img src="./images/websekolah3.png" alt="Web | Sistem Informasi Sekolah - Screenshot 3">
+        </button>
+        <button class="shot" type="button" data-image="./images/websekolah4.png" data-title="Web | Sistem Informasi Sekolah - Slide 4">
+            <img src="./images/websekolah4.png" alt="Web | Sistem Informasi Sekolah - Screenshot 4">
+        </button>
+        <button class="shot" type="button" data-image="./images/websekolah5.png" data-title="Web | Sistem Informasi Sekolah - Slide 5">
+            <img src="./images/websekolah5.png" alt="Web | Sistem Informasi Sekolah - Screenshot 5">
+        </button>
+        <button class="shot" type="button" data-image="./images/websekolah6.png" data-title="Web | Sistem Informasi Sekolah - Slide 6">
+            <img src="./images/websekolah6.png" alt="Web | Sistem Informasi Sekolah - Screenshot 6">
+        </button>
+        <button class="shot" type="button" data-image="./images/websekolah7.png" data-title="Web | Sistem Informasi Sekolah - Slide 7">
+            <img src="./images/websekolah7.png" alt="Web | Sistem Informasi Sekolah - Screenshot 7">
+        </button></div>
+        </div>
+        <div class="project-body">
+            <div class="project-topline">
+                <span class="project-type">Pengelolaan siswa, guru, dan jadwal</span>
+                <span class="stack-count">7 visual</span>
+            </div>
+            <h3>Web | Sistem Informasi Sekolah</h3>
+            <div class="project-stack"><span class="tag">PHP</span><span class="tag">JavaScript</span></div>
+            <p class="project-summary">Sistem manajemen data siswa, guru, dan jadwal sekolah berbasis web untuk mendukung administrasi pendidikan.</p>
+            <details class="project-details">
+                <summary>
+                    <span class="more-text">More details</span>
+                    <span class="less-text">Show less</span>
+                </summary>
+                <div class="details-content">
+                    <p><strong>Dibangun dengan:</strong> PHP, JavaScript</p>
+                    <ul><li>Membantu pengelolaan data inti sekolah dalam satu sistem yang lebih terstruktur.</li><li>Menunjukkan implementasi aplikasi web administratif yang fungsional.</li><li>Fokus pada integrasi data sekolah dan kemudahan pengelolaan informasi.</li></ul>
+                </div>
+            </details>
+        </div>
+    </article>
+    
+
+    <article class="project-card wide" data-category="dashboard">
+        <div class="project-media">
+            <div class="shot-rail">
+        <button class="shot" type="button" data-image="./images/ta1.png" data-title="Final Project | SPK AHP Vokasi - Slide 1">
+            <img src="./images/ta1.png" alt="Final Project | SPK AHP Vokasi - Screenshot 1">
+        </button>
+        <button class="shot" type="button" data-image="./images/ta2.png" data-title="Final Project | SPK AHP Vokasi - Slide 2">
+            <img src="./images/ta2.png" alt="Final Project | SPK AHP Vokasi - Screenshot 2">
+        </button>
+        <button class="shot" type="button" data-image="./images/ta3.png" data-title="Final Project | SPK AHP Vokasi - Slide 3">
+            <img src="./images/ta3.png" alt="Final Project | SPK AHP Vokasi - Screenshot 3">
+        </button>
+        <button class="shot" type="button" data-image="./images/ta4.png" data-title="Final Project | SPK AHP Vokasi - Slide 4">
+            <img src="./images/ta4.png" alt="Final Project | SPK AHP Vokasi - Screenshot 4">
+        </button>
+        <button class="shot" type="button" data-image="./images/ta5.png" data-title="Final Project | SPK AHP Vokasi - Slide 5">
+            <img src="./images/ta5.png" alt="Final Project | SPK AHP Vokasi - Screenshot 5">
+        </button>
+        <button class="shot" type="button" data-image="./images/ta6.png" data-title="Final Project | SPK AHP Vokasi - Slide 6">
+            <img src="./images/ta6.png" alt="Final Project | SPK AHP Vokasi - Screenshot 6">
+        </button>
+        <button class="shot" type="button" data-image="./images/ta7.png" data-title="Final Project | SPK AHP Vokasi - Slide 7">
+            <img src="./images/ta7.png" alt="Final Project | SPK AHP Vokasi - Screenshot 7">
+        </button>
+        <button class="shot" type="button" data-image="./images/ta8.png" data-title="Final Project | SPK AHP Vokasi - Slide 8">
+            <img src="./images/ta8.png" alt="Final Project | SPK AHP Vokasi - Screenshot 8">
+        </button>
+        <button class="shot" type="button" data-image="./images/ta9.png" data-title="Final Project | SPK AHP Vokasi - Slide 9">
+            <img src="./images/ta9.png" alt="Final Project | SPK AHP Vokasi - Screenshot 9">
+        </button>
+        <button class="shot" type="button" data-image="./images/ta10.png" data-title="Final Project | SPK AHP Vokasi - Slide 10">
+            <img src="./images/ta10.png" alt="Final Project | SPK AHP Vokasi - Screenshot 10">
+        </button></div>
+        </div>
+        <div class="project-body">
+            <div class="project-topline">
+                <span class="project-type">Sistem pendukung keputusan rekomendasi vokasi</span>
+                <span class="stack-count">10 visual</span>
+            </div>
+            <h3>Final Project | SPK AHP Vokasi</h3>
+            <div class="project-stack"><span class="tag">Laravel</span><span class="tag">AHP Method</span><span class="tag">MySQL</span></div>
+            <p class="project-summary">Sistem Pendukung Keputusan penentuan rekomendasi vokasi disabilitas menggunakan metode AHP agar proses penilaian lebih terukur.</p>
+            <details class="project-details">
+                <summary>
+                    <span class="more-text">More details</span>
+                    <span class="less-text">Show less</span>
+                </summary>
+                <div class="details-content">
+                    <p><strong>Dibangun dengan:</strong> Laravel, AHP Method, MySQL</p>
+                    <ul><li>Menggunakan pendekatan pengambilan keputusan berbobot untuk menghasilkan rekomendasi.</li><li>Menggabungkan logika sistem, pengelolaan data, dan presentasi informasi berbasis web.</li><li>Menjadi salah satu proyek akademik yang menonjolkan analisis dan implementasi sistem.</li></ul>
+                </div>
+            </details>
+        </div>
+    </article>
+    
+
+    <article class="project-card" data-category="dashboard">
+        <div class="project-media">
+            <div class="shot-rail">
+        <button class="shot" type="button" data-image="./images/VisualisasiIKILS.png" data-title="Visualisasi IKI LS - Slide 1">
+            <img src="./images/VisualisasiIKILS.png" alt="Visualisasi IKI LS - Screenshot 1">
+        </button></div>
+        </div>
+        <div class="project-body">
+            <div class="project-topline">
+                <span class="project-type">Dashboard indikator kinerja penyuluh BRPBAPPP</span>
+                <span class="stack-count">1 visual</span>
+            </div>
+            <h3>Visualisasi IKI LS</h3>
+            <div class="project-stack"><span class="tag">Spreadsheet</span><span class="tag">App Script</span><span class="tag">JavaScript</span><span class="tag">HTML</span><span class="tag">Looker Studio</span></div>
+            <p class="project-summary">Sistem visualisasi yang dibangun dari Looker Studio untuk memvisualisasikan indikator kinerja setiap penyuluh BRPBAPPP secara lebih jelas dan terukur.</p>
+            <details class="project-details">
+                <summary>
+                    <span class="more-text">More details</span>
+                    <span class="less-text">Show less</span>
+                </summary>
+                <div class="details-content">
+                    <p><strong>Dibangun dengan:</strong> Spreadsheet, App Script, JavaScript, HTML, Looker Studio</p>
+                    <ul><li>Membantu pembacaan capaian indikator kinerja secara cepat melalui dashboard visual.</li><li>Memanfaatkan spreadsheet sebagai basis data, App Script untuk pengolahan data, serta HTML dan JavaScript untuk integrasi pendukung.</li><li>Cocok untuk kebutuhan monitoring performa penyuluh berbasis data.</li></ul>
+                </div>
+            </details>
+        </div>
+    </article>
+    
+
+    <article class="project-card wide" data-category="automation">
+        <div class="project-media">
+            <div class="shot-rail">
+        <button class="shot" type="button" data-image="./images/monev1.png" data-title="Sistem Monev & Notulensi Otomatis - Slide 1">
+            <img src="./images/monev1.png" alt="Sistem Monev & Notulensi Otomatis - Screenshot 1">
+        </button>
+        <button class="shot" type="button" data-image="./images/monev2.png" data-title="Sistem Monev & Notulensi Otomatis - Slide 2">
+            <img src="./images/monev2.png" alt="Sistem Monev & Notulensi Otomatis - Screenshot 2">
+        </button>
+        <button class="shot" type="button" data-image="./images/monev3.png" data-title="Sistem Monev & Notulensi Otomatis - Slide 3">
+            <img src="./images/monev3.png" alt="Sistem Monev & Notulensi Otomatis - Screenshot 3">
+        </button>
+        <button class="shot" type="button" data-image="./images/monev4.png" data-title="Sistem Monev & Notulensi Otomatis - Slide 4">
+            <img src="./images/monev4.png" alt="Sistem Monev & Notulensi Otomatis - Screenshot 4">
+        </button>
+        <button class="shot" type="button" data-image="./images/monev5.png" data-title="Sistem Monev & Notulensi Otomatis - Slide 5">
+            <img src="./images/monev5.png" alt="Sistem Monev & Notulensi Otomatis - Screenshot 5">
+        </button>
+        <button class="shot" type="button" data-image="./images/monev6.png" data-title="Sistem Monev & Notulensi Otomatis - Slide 6">
+            <img src="./images/monev6.png" alt="Sistem Monev & Notulensi Otomatis - Screenshot 6">
+        </button>
+        <button class="shot" type="button" data-image="./images/monev7.png" data-title="Sistem Monev & Notulensi Otomatis - Slide 7">
+            <img src="./images/monev7.png" alt="Sistem Monev & Notulensi Otomatis - Screenshot 7">
+        </button></div>
+        </div>
+        <div class="project-body">
+            <div class="project-topline">
+                <span class="project-type">Otomasi laporan mingguan, rekap, dan notulensi</span>
+                <span class="stack-count">7 visual</span>
+            </div>
+            <h3>Sistem Monev & Notulensi Otomatis</h3>
+            <div class="project-stack"><span class="tag">Google Form</span><span class="tag">Spreadsheet</span><span class="tag">Autocrat</span><span class="tag">App Script</span><span class="tag">JavaScript</span></div>
+            <p class="project-summary">Sistem automasi mulai dari pengumpulan laporan mingguan melalui Google Form, pengaturan data di Spreadsheet, visualisasi progres tiap unit, hingga download laporan mingguan, bulanan, triwulan, dan tahunan.</p>
+            <details class="project-details">
+                <summary>
+                    <span class="more-text">More details</span>
+                    <span class="less-text">Show less</span>
+                </summary>
+                <div class="details-content">
+                    <p><strong>Dibangun dengan:</strong> Google Form, Spreadsheet, Autocrat, App Script, JavaScript</p>
+                    <ul><li>Sistem ini juga dilengkapi notulensi otomatis untuk kebutuhan rapat; pengguna cukup mengisi form agar notulensi dapat terbentuk secara lebih cepat.</li><li>Menyatukan alur input data, pengolahan, visualisasi, dan output laporan dalam satu rangkaian kerja yang efisien.</li><li>Menonjolkan kekuatan otomasi administrasi dan monitoring berbasis ekosistem Google Workspace.</li></ul>
+                </div>
+            </details>
+        </div>
+    </article>
+    
+
+    <article class="project-card" data-category="dashboard">
+        <div class="project-media">
+            <div class="shot-rail">
+        <button class="shot" type="button" data-image="./images/pegawaidashboard.png" data-title="Dashboard Kepegawaian - Slide 1">
+            <img src="./images/pegawaidashboard.png" alt="Dashboard Kepegawaian - Screenshot 1">
+        </button></div>
+        </div>
+        <div class="project-body">
+            <div class="project-topline">
+                <span class="project-type">Visualisasi data pegawai dan laporan bulanan otomatis</span>
+                <span class="stack-count">1 visual</span>
+            </div>
+            <h3>Dashboard Kepegawaian</h3>
+            <div class="project-stack"><span class="tag">Spreadsheet</span><span class="tag">App Script</span><span class="tag">JavaScript</span><span class="tag">HTML</span></div>
+            <p class="project-summary">Sistem visualisasi data pegawai yang dilengkapi fitur generate laporan bulanan otomatis untuk mempermudah pengelolaan data kepegawaian.</p>
+            <details class="project-details">
+                <summary>
+                    <span class="more-text">More details</span>
+                    <span class="less-text">Show less</span>
+                </summary>
+                <div class="details-content">
+                    <p><strong>Dibangun dengan:</strong> Spreadsheet, App Script, JavaScript, HTML</p>
+                    <ul><li>Memusatkan pengolahan data pegawai dan penyajian visual dalam satu dashboard berbasis HTML.</li><li>Membantu proses monitoring data, pembacaan ringkasan, dan penyusunan laporan secara lebih efisien.</li><li>Sangat relevan untuk kebutuhan administrasi dan pelaporan rutin.</li></ul>
+                </div>
+            </details>
+        </div>
+    </article>
+    
+
+    <article class="project-card wide" data-category="dashboard">
+        <div class="project-media">
+            <div class="shot-rail">
+        <button class="shot" type="button" data-image="./images/sistempenyuluhterpadu1.png" data-title="Sistem Penyuluh Terpadu - Slide 1">
+            <img src="./images/sistempenyuluhterpadu1.png" alt="Sistem Penyuluh Terpadu - Screenshot 1">
+        </button>
+        <button class="shot" type="button" data-image="./images/sistempenyuluhterpadu2.png" data-title="Sistem Penyuluh Terpadu - Slide 2">
+            <img src="./images/sistempenyuluhterpadu2.png" alt="Sistem Penyuluh Terpadu - Screenshot 2">
+        </button>
+        <button class="shot" type="button" data-image="./images/sistempenyuluhterpadu3.png" data-title="Sistem Penyuluh Terpadu - Slide 3">
+            <img src="./images/sistempenyuluhterpadu3.png" alt="Sistem Penyuluh Terpadu - Screenshot 3">
+        </button>
+        <button class="shot" type="button" data-image="./images/sistempenyuluhterpadu4.png" data-title="Sistem Penyuluh Terpadu - Slide 4">
+            <img src="./images/sistempenyuluhterpadu4.png" alt="Sistem Penyuluh Terpadu - Screenshot 4">
+        </button></div>
+        </div>
+        <div class="project-body">
+            <div class="project-topline">
+                <span class="project-type">Visualisasi data penyuluh berbasis HTML</span>
+                <span class="stack-count">4 visual</span>
+            </div>
+            <h3>Sistem Penyuluh Terpadu</h3>
+            <div class="project-stack"><span class="tag">App Script</span><span class="tag">JavaScript</span><span class="tag">HTML</span></div>
+            <p class="project-summary">Sistem untuk visualisasi data penyuluh yang dibangun menggunakan App Script, JavaScript, dan HTML untuk menampilkan basis data penyuluh secara lebih rapi.</p>
+            <details class="project-details">
+                <summary>
+                    <span class="more-text">More details</span>
+                    <span class="less-text">Show less</span>
+                </summary>
+                <div class="details-content">
+                    <p><strong>Dibangun dengan:</strong> App Script, JavaScript, HTML</p>
+                    <ul><li>Difokuskan pada visualisasi data berbasis HTML agar informasi lebih mudah dibaca langsung melalui antarmuka web.</li><li>Mendukung pemantauan data penyuluh secara terstruktur dan informatif.</li><li>Menunjukkan implementasi dashboard ringan namun fungsional untuk kebutuhan internal.</li></ul>
+                </div>
+            </details>
+        </div>
+    </article>
+    
+
+    <article class="project-card wide" data-category="dashboard">
+        <div class="project-media">
+            <div class="shot-rail">
+        <button class="shot" type="button" data-image="./images/visualisasipenyuluh1.png" data-title="Visualisasi Data Penyuluh Daerah - Slide 1">
+            <img src="./images/visualisasipenyuluh1.png" alt="Visualisasi Data Penyuluh Daerah - Screenshot 1">
+        </button>
+        <button class="shot" type="button" data-image="./images/visualisasipenyuluh2.png" data-title="Visualisasi Data Penyuluh Daerah - Slide 2">
+            <img src="./images/visualisasipenyuluh2.png" alt="Visualisasi Data Penyuluh Daerah - Screenshot 2">
+        </button>
+        <button class="shot" type="button" data-image="./images/visualisasipenyuluh3.png" data-title="Visualisasi Data Penyuluh Daerah - Slide 3">
+            <img src="./images/visualisasipenyuluh3.png" alt="Visualisasi Data Penyuluh Daerah - Screenshot 3">
+        </button>
+        <button class="shot" type="button" data-image="./images/visualisasipenyuluh4.png" data-title="Visualisasi Data Penyuluh Daerah - Slide 4">
+            <img src="./images/visualisasipenyuluh4.png" alt="Visualisasi Data Penyuluh Daerah - Screenshot 4">
+        </button>
+        <button class="shot" type="button" data-image="./images/visualisasipenyuluh5.png" data-title="Visualisasi Data Penyuluh Daerah - Slide 5">
+            <img src="./images/visualisasipenyuluh5.png" alt="Visualisasi Data Penyuluh Daerah - Screenshot 5">
+        </button></div>
+        </div>
+        <div class="project-body">
+            <div class="project-topline">
+                <span class="project-type">Dashboard wilayah untuk pembacaan data penyuluh</span>
+                <span class="stack-count">5 visual</span>
+            </div>
+            <h3>Visualisasi Data Penyuluh Daerah</h3>
+            <div class="project-stack"><span class="tag">Spreadsheet</span><span class="tag">Looker Studio</span><span class="tag">App Script</span></div>
+            <p class="project-summary">Visualisasi data penyuluh pada suatu daerah yang dibangun dari Spreadsheet, Looker Studio, dan App Script untuk mendukung pembacaan data lapangan secara lebih terstruktur.</p>
+            <details class="project-details">
+                <summary>
+                    <span class="more-text">More details</span>
+                    <span class="less-text">Show less</span>
+                </summary>
+                <div class="details-content">
+                    <p><strong>Dibangun dengan:</strong> Spreadsheet, Looker Studio, App Script</p>
+                    <ul><li>Membantu melihat kondisi dan distribusi data penyuluh pada wilayah tertentu melalui tampilan dashboard.</li><li>Menggabungkan kekuatan spreadsheet untuk basis data dan Looker Studio untuk visualisasi insight.</li><li>Cocok untuk kebutuhan monitoring wilayah berbasis data.</li></ul>
+                </div>
+            </details>
+        </div>
+    </article>
+    
+
+    <article class="project-card" data-category="dashboard">
+        <div class="project-media">
+            <div class="shot-rail">
+        <button class="shot" type="button" data-image="./images/campaign.png" data-title="Campaign Monitoring Dashboard - Slide 1">
+            <img src="./images/campaign.png" alt="Campaign Monitoring Dashboard - Screenshot 1">
+        </button></div>
+        </div>
+        <div class="project-body">
+            <div class="project-topline">
+                <span class="project-type">Visualisasi progres campaign media sosial pegawai</span>
+                <span class="stack-count">1 visual</span>
+            </div>
+            <h3>Campaign Monitoring Dashboard</h3>
+            <div class="project-stack"><span class="tag">Spreadsheet</span><span class="tag">App Script</span><span class="tag">Looker Studio</span></div>
+            <p class="project-summary">Visualisasi data pegawai untuk memantau progress campaign yang sudah dilakukan di beberapa sosial media seperti Instagram dan X/Twitter.</p>
+            <details class="project-details">
+                <summary>
+                    <span class="more-text">More details</span>
+                    <span class="less-text">Show less</span>
+                </summary>
+                <div class="details-content">
+                    <p><strong>Dibangun dengan:</strong> Spreadsheet, App Script, Looker Studio</p>
+                    <ul><li>Dashboard ini membantu melihat perkembangan aktivitas campaign pegawai secara lebih ringkas dan mudah dibaca.</li><li>Difokuskan pada pemantauan capaian campaign di beberapa kanal media sosial dalam satu tampilan visual.</li><li>Cocok digunakan sebagai media monitoring performa campaign dan rekap progres kegiatan digital.</li></ul>
+                </div>
+            </details>
+        </div>
+    </article>
+    
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Contact</span>
+            <h2>Get In <span class="gradient">Touch</span></h2>
+          </div>
+          <p>
+            Terbuka untuk diskusi, kolaborasi, maupun pekerjaan part-time yang berkaitan dengan website,
+            visualisasi data, App Script, dan kebutuhan teknis lainnya.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="panel contact-card reveal-left">
+            <h3 style="font-size:1.45rem; margin-bottom:12px;">Kolaborasi & Diskusi</h3>
+            <p>
+              Jika kamu ingin berdiskusi tentang web development, dashboard, App Script, otomasi kerja, atau visualisasi data,
+              silakan hubungi saya melalui form di samping atau informasi kontak berikut.
+            </p>
+
+            <div class="contact-list">
+              <div class="contact-item">
+                <strong>Lokasi Base</strong>
+                Makassar, Sulawesi Selatan, Indonesia
+              </div>
+              <div class="contact-item">
+                <strong>WhatsApp / Phone</strong>
+                +62 853-4606-4591
+              </div>
+              <div class="contact-item">
+                <strong>Email Address</strong>
+                muhammadfaisal2910@gmail.com
+              </div>
+            </div>
+          </div>
+
+          <div class="panel contact-card reveal-right">
+            <h3 style="font-size:1.45rem; margin-bottom:12px;">Kirim Pesan</h3>
+            <form class="contact-form" action="https://formspree.io/f/mknddwol" method="POST">
+              <input type="text" placeholder="Nama Lengkap Anda" name="name" required>
+              <input type="email" placeholder="Alamat Email Aktif" name="email" required>
+              <textarea name="message" rows="7" placeholder="Tulis pesan Anda di sini..." required></textarea>
+              <button class="btn-primary" type="submit">Kirim Pesan</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-bar">
+      <span>Built by <strong style="color:#fff;">Muhammad Faisal</strong></span>
+      <span>Portfolio Website</span>
+    </div>
+  </footer>
+
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-inner">
+      <div class="lightbox-top">
+        <strong id="lightboxTitle">Preview</strong>
+        <button class="lightbox-close" id="lightboxClose" type="button">✕</button>
+      </div>
+      <div class="lightbox-body">
+        <img id="lightboxImage" src="" alt="Preview gambar">
       </div>
     </div>
   </div>
-</header>
 
-<section id="hero" class="main-container hero-container">
-  <div class="hero-left reveal-left">
-    <span class="pre-title">Hi there, I am</span>
-    <h1 class="hero-name">Muhammad <span class="gradient-text">Faisal</span></h1>
-    <p class="hero-desc">
-      Nama saya Muhammad Faisal, lulusan Teknik Komputer dan Jaringan dari Politeknik Negeri Ujung Pandang (September 2021 – Agustus 2025). Selama menempuh pendidikan, saya aktif dalam berbagai proyek teknologi dan pelatihan, di mana saya memfokuskan pengembangan diri dan minat karier profesional saya pada bidang <strong>Web Development</strong> dan <strong>Pengolahan Data</strong>.
-    </p>
-
-    <div class="footer-icons">
-      <a href="https://www.linkedin.com/in/muhammad-faisal-qq/" target="_blank">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-        </svg>
-      </a>
-      <a href="https://github.com/CityFactory" target="_blank">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-        </svg>
-      </a>
-    </div>
-  </div>
-
-  <div class="hero-right hero-img-container reveal-right">
-    <img src="./images/fotofaisal.png" alt="Foto Muhammad Faisal" class="hero-img">
-  </div>
-</section>
-
-<section id="skills" class="main-container">
-    <span class="pre-title reveal-top">Learning Path</span>
-    <h1 class="section-title reveal-top">Training & <span class="gradient-text">Certification</span></h1>
-
-    <div class="skills-grid reveal-bottom">
-        <div class="glass-card education">
-            <img src="images/web.png" alt="Web Programming">
-            <div>
-                <h4 class="education-title">Web Programming Development</h4>
-                <p><small>VSGA Digital Talent Scholarship 2025</small></p>
-                <p>Pengembangan web modern full-stack dengan framework terkini.</p>
-            </div>
-        </div>
-
-        <div class="glass-card education">
-            <img src="images/associate.png" alt="Data Scientist">
-            <div>
-                <h4 class="education-title">Associate Data Scientist</h4>
-                <p><small>VSGA Digital Talent Scholarship 2024</small></p>
-                <p>Machine Learning, Preprocessing, dan Visualisasi Data Python.</p>
-            </div>
-        </div>
-
-        <div class="glass-card education">
-            <img src="images/pemasarandigital.png" alt="Pemasaran Digital">
-            <div>
-                <h4 class="education-title">Pemasaran Digital Dasar</h4>
-                <p><small>DEA Digital Talent Scholarship 2024</small></p>
-                <p>Strategi SEO, SEM, dan Social Media Marketing analytics.</p>
-            </div>
-        </div>
-        
-        <div class="glass-card education">
-            <img src="images/dataanalis.png" alt="Data Analytics">
-            <div>
-                <h4 class="education-title">Data Analytics Professional</h4>
-                <p><small>FGA Digital Talent Scholarship 2024</small></p>
-                <p>Analisis statistik mendalam untuk pengambilan keputusan bisnis.</p>
-            </div>
-        </div>
-
-        <div class="glass-card education">
-            <img src="images/python.png" alt="Python">
-            <div>
-                <h4 class="education-title">Python Fundamental</h4>
-                <p><small>Aguna Course (Mei 2024)</small></p>
-                <p>Penguasaan struktur data dan algoritma dasar Python.</p>
-            </div>
-        </div>
-
-        <div class="glass-card education">
-            <img src="images/revo.png" alt="Revo">
-            <div>
-                <h4 class="education-title">Data Analytics Mini Course</h4>
-                <p><small>RevoU (Mei 2024)</small></p>
-                <p>Fundamental visualisasi data bisnis dan storytelling.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="portofolios" class="main-container">
-    <span class="pre-title reveal-top">My Works</span>
-    <h1 class="section-title reveal-top">Featured <span class="gradient-text">Portfolio</span></h1>
-    
-    <div class="grid-3 reveal-bottom">
-        
-        <div class="glass-card portofolio">
-            <div class="portofolio-cover">
-                <img src="./images/iot.png" alt="IoT Project">
-            </div>
-            <div class="portofolio-info">
-                <div class="portofolio-title">
-                    <h4>IOT | OTA Update System</h4>
-                    <a href="https://github.com/CityFactory/iot.git" target="_blank" class="portofolio-link">
-                        <svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 0l18 15h-11.081l-6.919 9z"/></svg>
-                    </a>
-                </div>
-                <div class="portofolio-tags">
-                    <div>Python</div><div>MQTT</div><div>ESP8266</div>
-                </div>
-                <p>Sistem update firmware over-the-air (OTA) untuk perangkat IoT.</p>
-            </div>
-        </div>
-
-        <div class="glass-card portofolio">
-            <div class="portofolio-cover">
-                <img src="./images/mobile.png" alt="Mobile App">
-            </div>
-            <div class="portofolio-info">
-                <div class="portofolio-title">
-                    <h4>Mobile App | UMKM System</h4>
-                    <a href="https://github.com/CityFactory/aplikasi.git" target="_blank" class="portofolio-link">
-                        <svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 0l18 15h-11.081l-6.919 9z"/></svg>
-                    </a>
-                </div>
-                <div class="portofolio-tags">
-                    <div>Java</div><div>XML</div><div>SQLite</div>
-                </div>
-                <p>Aplikasi Android manajemen produk dan inventaris UMKM Dapur Kenyang.</p>
-            </div>
-        </div>
-
-        <div class="glass-card portofolio">
-            <div class="portofolio-cover">
-                <img src="./images/web.png.jpg" alt="SIMPRODI">
-            </div>
-            <div class="portofolio-info">
-                <div class="portofolio-title">
-                    <h4>Web App | SIMPRODI TKJ</h4>
-                    <a href="https://github.com/CityFactory/simprodi.git" target="_blank" class="portofolio-link">
-                        <svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 0l18 15h-11.081l-6.919 9z"/></svg>
-                    </a>
-                </div>
-                <div class="portofolio-tags">
-                    <div>React</div><div>Node.js</div><div>MySQL</div>
-                </div>
-                <p>Sistem Informasi Manajemen Program Studi full-stack untuk monitoring akademik.</p>
-            </div>
-        </div>
-
-        <div class="glass-card portofolio">
-            <div class="portofolio-cover">
-                <img src="./images/api.png" alt="API Food">
-            </div>
-            <div class="portofolio-info">
-                <div class="portofolio-title">
-                    <h4>Rest API | Kuliner Sulsel</h4>
-                    <a href="https://github.com/CityFactory/API.git" target="_blank" class="portofolio-link">
-                        <svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 0l18 15h-11.081l-6.919 9z"/></svg>
-                    </a>
-                </div>
-                <div class="portofolio-tags">
-                    <div>React</div><div>Node.js</div><div>Express</div>
-                </div>
-                <p>Pengembangan dan integrasi API data kuliner khas dengan frontend interaktif.</p>
-            </div>
-        </div>
-
-        <div class="glass-card portofolio">
-            <div class="portofolio-cover">
-                <img src="./images/rpl.png" alt="BaBeYaGun">
-            </div>
-            <div class="portofolio-info">
-                <div class="portofolio-title">
-                    <h4>Web | BaBeYaGun Marketplace</h4>
-                    <a href="https://github.com/CityFactory/rpl.git" target="_blank" class="portofolio-link">
-                        <svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 0l18 15h-11.081l-6.919 9z"/></svg>
-                    </a>
-                </div>
-                <div class="portofolio-tags">
-                    <div>PHP</div><div>MySQL</div><div>Bootstrap</div>
-                </div>
-                <p>Platform jual beli barang bekas layak guna dengan fitur CRUD lengkap.</p>
-            </div>
-        </div>
-
-        <div class="glass-card portofolio">
-            <div class="portofolio-cover scroll-container">
-                <div class="scroll-wrapper">
-                    <img src="./images/jaringan1.jpg">
-                    <img src="./images/jaringan2.jpg">
-                    <img src="./images/jaringan3.jpg">
-                    <img src="./images/jaringan4.jpg">
-                    <img src="./images/jaringan5.jpg">
-                </div>
-            </div>
-            <div class="portofolio-info">
-                <div class="portofolio-title">
-                    <h4>E-Commerce | Alat Jaringan</h4>
-                    <a href="#" target="_blank" class="portofolio-link"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 0l18 15h-11.081l-6.919 9z"/></svg></a>
-                </div>
-                <div class="portofolio-tags">
-                    <div>WordPress</div><div>WooCommerce</div>
-                </div>
-                <p>Website katalog dan penjualan perangkat jaringan komputer online.</p>
-            </div>
-        </div>
-
-        <div class="glass-card portofolio">
-            <div class="portofolio-cover scroll-container">
-                <div class="scroll-wrapper">
-                    <img src="./images/portfolio1.jpg">
-                    <img src="./images/portfolio2.jpg">
-                    <img src="./images/portfolio3.jpg">
-                    <img src="./images/portfolio6.jpg">
-                </div>
-            </div>
-            <div class="portofolio-info">
-                <div class="portofolio-title">
-                    <h4>Modern Web | Bento Grid Layout</h4>
-                    <a href="#" target="_blank" class="portofolio-link"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 0l18 15h-11.081l-6.919 9z"/></svg></a>
-                </div>
-                <div class="portofolio-tags"><div>CSS Grid</div><div>UI Design</div></div>
-                <p>Eksplorasi desain portfolio modern menggunakan tata letak Bento Grid.</p>
-            </div>
-        </div>
-
-        <div class="glass-card portofolio">
-            <div class="portofolio-cover scroll-container">
-                <div class="scroll-wrapper">
-                    <img src="./images/cleaning1.jpg">
-                    <img src="./images/cleaning2.jpg">
-                    <img src="./images/cleaning3.jpg">
-                    <img src="./images/cleaning4.jpg">
-                    <img src="./images/cleaning5.jpg">
-                </div>
-            </div>
-            <div class="portofolio-info">
-                <div class="portofolio-title">
-                    <h4>Landing Page | Cleaning Service</h4>
-                    <a href="#" target="_blank" class="portofolio-link"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 0l18 15h-11.081l-6.919 9z"/></svg></a>
-                </div>
-                <div class="portofolio-tags"><div>WordPress</div><div>Elementor</div></div>
-                <p>Website profil bisnis untuk penawaran jasa kebersihan profesional.</p>
-            </div>
-        </div>
-
-        <div class="glass-card portofolio">
-            <div class="portofolio-cover scroll-container">
-                <div class="scroll-wrapper">
-                    <img src="./images/motor1.jpg">
-                    <img src="./images/motor2.jpg">
-                    <img src="./images/motor3.jpg">
-                    <img src="./images/motor4.jpg">
-                    <img src="./images/motor5.jpg">
-                </div>
-            </div>
-            <div class="portofolio-info">
-                <div class="portofolio-title">
-                    <h4>Web | Rental Motor</h4>
-                    <a href="#" target="_blank" class="portofolio-link"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 0l18 15h-11.081l-6.919 9z"/></svg></a>
-                </div>
-                <div class="portofolio-tags"><div>WordPress</div></div>
-                <p>Sistem informasi penyewaan motor dengan katalog unit.</p>
-            </div>
-        </div>
-
-        <div class="glass-card portofolio">
-            <div class="portofolio-cover scroll-container">
-                <div class="scroll-wrapper">
-                    <img src="./images/kue1.jpg">
-                    <img src="./images/kue2.jpg">
-                    <img src="./images/kue3.jpg">
-                    <img src="./images/kue4.jpg">
-                    <img src="./images/kue5.jpg">
-                </div>
-            </div>
-            <div class="portofolio-info">
-                <div class="portofolio-title">
-                    <h4>Web | Toko Kue Tradisional</h4>
-                    <a href="#" target="_blank" class="portofolio-link"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 0l18 15h-11.081l-6.919 9z"/></svg></a>
-                </div>
-                <div class="portofolio-tags"><div>WordPress</div></div>
-                <p>Website e-commerce untuk penjualan aneka kue tradisional.</p>
-            </div>
-        </div>
-
-        <div class="glass-card portofolio">
-            <div class="portofolio-cover scroll-container">
-                <div class="scroll-wrapper">
-                    <img src="./images/tenda1.jpg">
-                    <img src="./images/tenda2.jpg">
-                    <img src="./images/tenda3.jpg">
-                    <img src="./images/tenda4.jpg">
-                    <img src="./images/tenda5.jpg">
-                </div>
-            </div>
-            <div class="portofolio-info">
-                <div class="portofolio-title">
-                    <h4>Web | Rental Tenda</h4>
-                    <a href="#" target="_blank" class="portofolio-link"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 0l18 15h-11.081l-6.919 9z"/></svg></a>
-                </div>
-                <div class="portofolio-tags"><div>WordPress</div></div>
-                <p>Sistem informasi jasa penyewaan tenda untuk berbagai acara.</p>
-            </div>
-        </div>
-
-        <div class="glass-card portofolio">
-            <div class="portofolio-cover scroll-container">
-                <div class="scroll-wrapper">
-                    <img src="./images/magang1.png">
-                    <img src="./images/magang2.png">
-                    <img src="./images/magang3.png">
-                    <img src="./images/magang4.png">
-                </div>
-            </div>
-            <div class="portofolio-info">
-                <div class="portofolio-title">
-                    <h4>Data Viz | Dashboard DTS</h4>
-                    <a href="#" target="_blank" class="portofolio-link"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 0l18 15h-11.081l-6.919 9z"/></svg></a>
-                </div>
-                <div class="portofolio-tags">
-                    <div>Looker Studio</div><div>Google Sheets</div>
-                </div>
-                <p>Dashboard interaktif monitoring data peserta DTS wilayah Indonesia Timur.</p>
-            </div>
-        </div>
-
-        <div class="glass-card portofolio">
-            <div class="portofolio-cover scroll-container">
-                <div class="scroll-wrapper">
-                    <img src="./images/websekolah1.png">
-                    <img src="./images/websekolah2.png">
-                    <img src="./images/websekolah3.png">
-                    <img src="./images/websekolah4.png">
-                    <img src="./images/websekolah5.png">
-                    <img src="./images/websekolah6.png">
-                    <img src="./images/websekolah7.png">
-                </div>
-            </div>
-            <div class="portofolio-info">
-                <div class="portofolio-title">
-                    <h4>Web | Sistem Informasi Sekolah</h4>
-                    <a href="https://github.com/CityFactory/websekolah.git" target="_blank" class="portofolio-link"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 0l18 15h-11.081l-6.919 9z"/></svg></a>
-                </div>
-                <div class="portofolio-tags">
-                    <div>PHP</div><div>Javascript</div>
-                </div>
-                <p>Sistem manajemen data siswa, guru, dan jadwal sekolah berbasis web.</p>
-            </div>
-        </div>
-        
-        <div class="glass-card portofolio">
-             <div class="portofolio-cover scroll-container">
-                <div class="scroll-wrapper">
-                    <img src="./images/ta1.png">
-                    <img src="./images/ta2.png">
-                    <img src="./images/ta3.png">
-                    <img src="./images/ta4.png">
-                    <img src="./images/ta5.png">
-                    <img src="./images/ta6.png">
-                    <img src="./images/ta7.png">
-                    <img src="./images/ta8.png">
-                    <img src="./images/ta9.png">
-                    <img src="./images/ta10.png">
-                </div>
-            </div>
-            <div class="portofolio-info">
-                <div class="portofolio-title">
-                    <h4>Final Project | SPK AHP Vokasi</h4>
-                    <a href="https://github.com/CityFactory/ahpdisabilitas.git" target="_blank" class="portofolio-link"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 0l18 15h-11.081l-6.919 9z"/></svg></a>
-                </div>
-                <div class="portofolio-tags">
-                    <div>Laravel</div><div>AHP Method</div><div>MySQL</div>
-                </div>
-                <p>Sistem Pendukung Keputusan penentuan rekomendasi vokasi disabilitas.</p>
-            </div>
-        </div>
-
-    </div>
-</section>
-
-<section id="contact" class="main-container">
-    <div class="contact-container reveal-bottom">
-        <div class="contact-left">
-            <span class="pre-title">Contact</span>
-            <h1 class="section-title">Get In <span class="gradient-text">Touch</span></h1>
-            <p style="color: var(--text-muted); margin-bottom: 30px;">Tertarik untuk berkolaborasi atau punya pertanyaan? Kirimkan pesan Anda, dan mari ciptakan sesuatu yang luar biasa bersama.</p>
-            
-            <form class="contact-form" action="https://formspree.io/f/mknddwol" method="POST">
-                <input type="text" placeholder="Nama Lengkap Anda" name="name" required>
-                <input type="email" placeholder="Alamat Email Aktif" name="email" required>
-                <textarea name="message" id="message" placeholder="Tulis Pesan Anda Disini..." cols="30" rows="6" required></textarea>
-                <button class="btn-submit">Kirim Pesan Sekarang</button>
-            </form>
-        </div>
-        
-        <div class="contact-right">
-            <div class="glass-card contact-item">
-                <div class="contact-item-icon">
-                    <svg viewBox="0 0 24 24"><path d="M12 3c2.131 0 4 1.73 4 3.702 0 2.05-1.714 4.941-4 8.561-2.286-3.62-4-6.511-4-8.561 0-1.972 1.869-3.702 4-3.702zm0-2c-3.148 0-6 2.553-6 5.702 0 3.148 2.602 6.907 6 12.298 3.398-5.391 6-9.15 6-12.298 0-3.149-2.851-5.702-6-5.702zm0 8c-1.105 0-2-.895-2-2s.895-2 2-2 2 .895 2 2-.895 2-2 2zm8 6h-3.135c-.385.641-.798 1.309-1.232 2h3.131l.5 1h-4.264l-.344.544-.289.456h.558l.858 2h-7.488l.858-2h.479l-.289-.456-.343-.544h-2.042l-1.011-1h2.42c-.435-.691-.848-1.359-1.232-2h-3.135l-4 8h24l-4-8zm-12.794 6h-3.97l1.764-3.528 1.516 1.528h1.549l-.859 2zm8.808-2h3.75l1 2h-3.892l-.858-2z"/></svg>
-                </div>
-                <div class="contact-item-detail">
-                    <h4>Lokasi Base</h4>
-                    <p>Makassar, Sulawesi Selatan, ID</p>
-                </div>
-            </div>
-
-            <div class="glass-card contact-item" style="display: flex; align-items: center;">
-                <div class="contact-item-icon">
-                    <svg viewBox="0 0 24 24"><path d="M8.26 1.289l-1.564.772c-5.793 3.02 2.798 20.944 9.31 20.944.46 0 .904-.094 1.317-.284l1.542-.755-2.898-5.594-1.54.754c-.181.087-.384.134-.597.134-2.561 0-6.841-8.204-4.241-9.596l1.546-.763-2.875-5.612zm7.746 22.711c-5.68 0-12.221-11.114-12.221-17.832 0-2.419.833-4.146 2.457-4.992l2.382-1.176 3.857 7.347-2.437 1.201c-1.439.772 2.409 8.424 3.956 7.68l2.399-1.179 3.816 7.36s-2.36 1.162-2.476 1.215c-.547.251-1.129.376-1.733.376"/></svg>
-                </div>
-                <div class="contact-item-detail">
-                    <h4>WhatsApp / Phone</h4>
-                    <p>+62 853-4606-4591</p>
-                </div>
-            </div>
-
-            <div class="glass-card contact-item" style="display: flex; align-items: center;">
-                <div class="contact-item-icon">
-                    <svg viewBox="0 0 24 24"><path d="M12 .02c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6.99 6.98l-6.99 5.666-6.991-5.666h13.981zm.01 10h-14v-8.505l7 5.673 7-5.672v8.504z"/></svg>
-                </div>
-                <div class="contact-item-detail">
-                    <h4>Email Address</h4>
-                    <p>muhammadfaisal2910@gmail.com</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<footer>
-    <p>Built with <span style="color: var(--neon-blue);">Wait and Bleed</span> by <strong>Muhammad Faisal</strong> &copy; 2024</p>
-</footer>
-
-<script>
-    // Mobile Menu Toggle
-    const burger = document.getElementById('burger');
-    const navLinks = document.querySelector('.nav-links ul');
-    const links = document.querySelectorAll('.nav-links ul li');
-
-    burger.addEventListener('click', () => {
-        navLinks.classList.toggle('nav-active');
-        burger.classList.toggle('toggle');
-    });
-
-    links.forEach(link => {
-        link.addEventListener('click', () => {
-            navLinks.classList.remove('nav-active');
-            burger.classList.remove('toggle');
-        });
-    });
-
-    // --- SCROLL REVEAL ANIMATION CONFIGURATION ---
+  <script>
     const sr = ScrollReveal({
-        origin: 'top',
-        distance: '60px',
-        duration: 2000,
-        delay: 200,
-        reset: false /* Animasi hanya sekali saat scroll ke bawah */
+      origin: 'bottom',
+      distance: '48px',
+      duration: 1000,
+      delay: 120,
+      reset: false
+    });
+    sr.reveal('.reveal-bottom', { interval: 120 });
+    sr.reveal('.reveal-left', { origin: 'left', interval: 120 });
+    sr.reveal('.reveal-right', { origin: 'right', interval: 120 });
+
+    const chips = document.querySelectorAll('.chip');
+    const cards = document.querySelectorAll('.project-card');
+
+    chips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        chips.forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+
+        const filter = chip.dataset.filter;
+        cards.forEach(card => {
+          const match = filter === 'all' || card.dataset.category === filter;
+          card.style.display = match ? '' : 'none';
+        });
+      });
     });
 
-    sr.reveal('.hero-left, .reveal-left', { origin: 'left' });
-    sr.reveal('.hero-right, .reveal-right', { origin: 'right', delay: 400 });
-    sr.reveal('.section-title, .pre-title, .reveal-top', { interval: 200 });
-    sr.reveal('.skills-grid, .grid-3, .contact-container, .reveal-bottom', { origin: 'bottom', interval: 200 });
+    const shots = document.querySelectorAll('.shot');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImage');
+    const lightboxTitle = document.getElementById('lightboxTitle');
+    const lightboxClose = document.getElementById('lightboxClose');
 
-</script>
+    shots.forEach(shot => {
+      shot.addEventListener('click', () => {
+        lightbox.classList.add('active');
+        lightboxImg.src = shot.dataset.image;
+        lightboxTitle.textContent = shot.dataset.title || 'Preview';
+      });
+    });
 
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      lightboxImg.src = '';
+    }
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
 </body>
 </html>
